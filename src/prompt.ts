@@ -17,7 +17,7 @@ function detectCommand(line: string) {
 
 export default async function prompt() {
   const resp = await prompts(
-    { type: "text", name: "note", message: "'" },
+    { type: "text", name: "note", message: "" },
     {
       onCancel: () => {
         console.log("Bye...");
