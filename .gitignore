@@ -177,3 +177,4 @@ dist
 # sqlite
 db_dev.sqlite
 db_dev.sqlite-*
+db.sqlite-*
