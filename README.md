@@ -1,6 +1,6 @@
 # DECK : Claude Code Development Template
 
-Claude Code の開発ワークフローをテンプレート化したもの。設計と実装を分離し、ユーザー承認を間に挟む**人間中心設計**のアプローチを取る。
+Claude Code の開発ワークフローをテンプレート化したもの。設計と実装を分離し、AI の出力に人間の承認を挟む **Human-in-the-Loop** のアプローチを取る。
 
 ## 全体ワークフロー
 
