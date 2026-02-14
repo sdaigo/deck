@@ -1,32 +1,85 @@
 # DECK : Claude Code Development Template
 
-Claude Code ワークフローテンプレート。
+Claude Code の開発ワークフローをテンプレート化したもの。設計と実装を分離し、ユーザー承認を間に挟む**人間中心設計**のアプローチを取る。
 
-## ワークフロー
+## 全体ワークフロー
 
-```
-/setup             プロジェクト基盤の構築（docs/ の永続ドキュメント）
-    |
-/feature-design    要件定義 + UX設計 + UXレビュー + ユーザー承認
-    |
-/feature-implement 承認済み設計に基づく実装 + 自動コードレビュー
+```mermaid
+flowchart LR
+    A["/setup"] --> B["/feature-design"]
+    B --> C{ユーザー承認}
+    C -->|承認| D["/feature-implement"]
+    C -->|修正要求| B
+    D --> E[完成]
 ```
 
-## 構成
+| フェーズ | コマンド | 実行頻度 | 成果物 |
+|:---|:---|:---|:---|
+| 基盤構築 | `/setup` | プロジェクトで1回 | `docs/` 永続ドキュメント 6種 |
+| 設計 | `/feature-design [機能名]` | 機能ごと | `.steering/` 作業ドキュメント |
+| 実装 | `/feature-implement` | 機能ごと | コード + テスト |
 
+## 設計フェーズの詳細
+
+`/feature-design` は要件定義から設計、レビュー、タスク分解までを一気通貫で行う。
+
+```mermaid
+flowchart TD
+    R["requirements.md<br/>要件定義"] --> D["design.md<br/>機能設計"]
+    D --> W["lofi-wireframer<br/>ワイヤーフレーム生成"]
+    W --> UX{"ux-reviewer<br/>UXレビュー"}
+    UX -->|指摘あり| D
+    UX -->|OK| AP{ユーザー承認}
+    AP -->|修正要求| D
+    AP -->|承認| P["planner<br/>tasklist.md 生成"]
 ```
-.claude/
-  agents/          専門家エージェント（Task ツールで起動）
-  rules/common/    汎用ルール（自動読み込み）
-  commands/        スラッシュコマンド
-  hooks/           ツール実行後の自動処理
-  skills/          対話的ガイド（メインコンテキストに読み込み）
-  settings.json    権限・フック設定
+
+## 実装フェーズの詳細
+
+`/feature-implement` は tasklist.md に従って実装し、エージェントが自動でレビューする。
+
+```mermaid
+flowchart TD
+    T["tasklist.md<br/>タスク取得"] --> I["実装"]
+    I --> CR["code-reviewer<br/>コード品質"]
+    I --> SR["security-reviewer<br/>セキュリティ"]
+    CR --> F{指摘あり?}
+    SR --> F
+    F -->|はい| I
+    F -->|いいえ| A11Y{"a11y-auditor<br/>UI変更あり?"}
+    A11Y -->|はい| A11R["a11y-auditor<br/>アクセシビリティ監査"]
+    A11Y -->|なし| TEST
+    A11R --> TEST["test-runner<br/>テスト実行"]
+    TEST --> NEXT{次のタスク?}
+    NEXT -->|あり| T
+    NEXT -->|なし| DONE[完了]
 ```
+
+> code-reviewer と security-reviewer は並行実行される。
 
 ## エージェント
 
-`.claude/agents/` に定義。条件を満たすと自動起動（PROACTIVE）する。
+```mermaid
+graph TB
+    subgraph "設計フェーズ"
+        UXR["ux-reviewer<br/>(sonnet)"]
+        PL["planner<br/>(opus)"]
+    end
+
+    subgraph "実装フェーズ - 並行実行"
+        CR["code-reviewer<br/>(sonnet)"]
+        SR["security-reviewer<br/>(sonnet)"]
+    end
+
+    subgraph "実装フェーズ - 条件付き"
+        A11["a11y-auditor<br/>(sonnet)"]
+        DBR["db-reviewer<br/>(sonnet)"]
+    end
+
+    subgraph "検証"
+        TR["test-runner<br/>(haiku)"]
+    end
+```
 
 | Agent | Model | 自動起動条件 |
 |:---|:---|:---|
@@ -34,11 +87,44 @@ Claude Code ワークフローテンプレート。
 | ux-reviewer | sonnet | design.md 作成直後 |
 | code-reviewer | sonnet | コード変更直後 |
 | security-reviewer | sonnet | コード変更直後（code-reviewer と並行） |
-| test-runner | haiku | フェーズ完了時 |
 | a11y-auditor | sonnet | UI コンポーネント実装直後 |
 | db-reviewer | sonnet | DB スキーマ変更直後 |
+| test-runner | haiku | フェーズ完了時 |
 
 エージェントはプロジェクト固有の記述を持たず、`docs/` や `package.json` から動的に検出する。
+
+## ディレクトリ構造
+
+```
+.claude/
+  agents/          専門家エージェント定義（Task ツールで起動）
+  rules/common/    汎用ルール（自動読み込み）
+  commands/        スラッシュコマンド
+  hooks/           ツール実行後の自動処理
+  skills/          対話的ガイド（メインコンテキストに読み込み）
+  settings.json    権限・フック設定
+docs/              永続ドキュメント（/setup で生成）
+  proposals/       下書き・アイデア・技術調査メモ
+.steering/         作業単位のドキュメント（/feature-design で生成）
+```
+
+```mermaid
+graph LR
+    subgraph "永続（プロジェクト全体）"
+        DOCS["docs/<br/>6種の設計ドキュメント"]
+    end
+
+    subgraph "作業単位（機能ごと）"
+        ST[".steering/<br/>requirements.md<br/>design.md<br/>tasklist.md"]
+    end
+
+    subgraph "テンプレート（共有）"
+        CL[".claude/<br/>agents / rules / commands<br/>skills / hooks"]
+    end
+
+    CL -->|参照| DOCS
+    CL -->|生成・管理| ST
+```
 
 ## ルール
 
@@ -67,6 +153,8 @@ Claude Code ワークフローテンプレート。
 | `/run-tests` | test-runner 起動 |
 | `/audit-a11y` | a11y-auditor 起動 |
 | `/review-docs` | ドキュメントレビュー |
+| `/setup-infra` | インフラ構成・CI/CD パイプライン構築 |
+| `/pre-deploy` | デプロイ前ゲートチェック |
 
 ## スキル
 
@@ -84,6 +172,8 @@ Claude Code ワークフローテンプレート。
 | development-guidelines | 開発ガイドラインの作成 |
 | glossary-creation | 用語集の作成 |
 | lofi-wireframer | ワイヤーフレーム生成 |
+| infra-guide | インフラ構成設計ガイド |
+| ci-cd | CI/CD ワークフロー生成 |
 
 ### プロジェクト追加（例）
 
@@ -92,6 +182,8 @@ Claude Code ワークフローテンプレート。
 | db-migration | Drizzle ORM / Supabase |
 | component-builder | shadcn/ui / React |
 | api-route-builder | Next.js Route Handler |
+
+プロジェクトの技術スタックに合わせて追加・差し替えする。
 
 ## フック
 
@@ -105,8 +197,15 @@ Claude Code ワークフローテンプレート。
 
 ### 新規プロジェクトへの適用
 
-1. `.claude/` ディレクトリをプロジェクトルートにコピー
-2. `CLAUDE.md` をプロジェクトルートにコピーし、プロジェクト追加スキルを調整
+```mermaid
+flowchart LR
+    A["1. .claude/ と<br/>CLAUDE.md をコピー"] --> B["2. /setup 実行<br/>docs/ 生成"]
+    B --> C["3. /feature-design<br/>機能を設計"]
+    C --> D["4. /feature-implement<br/>実装開始"]
+```
+
+1. `.claude/` ディレクトリと `CLAUDE.md` をプロジェクトルートにコピー
+2. プロジェクト追加スキルを技術スタックに合わせて調整
 3. `/setup` を実行して `docs/` の永続ドキュメントを対話的に作成
    - `docs/product-requirements.md` - プロダクト要求定義書
    - `docs/functional-design.md` - 機能設計書
@@ -118,6 +217,10 @@ Claude Code ワークフローテンプレート。
 
 ### 前提条件
 
-- Bun（https://bun.sh）
-- Biome（`bun add -D @biomejs/biome`）
+- [Bun](https://bun.sh)
+- [Biome](https://biomejs.dev)（`bun add -D @biomejs/biome`）
 - jq（フック内で JSON パースに使用）
+
+## ライセンス
+
+MIT
