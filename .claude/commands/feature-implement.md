@@ -28,6 +28,12 @@ description: 承認済みの設計に基づき、tasklist.mdに従って実装�
 
 `ui-design-brief.md` の「デザイン参照」セクションを読み、方式に応じて処理する:
 
+**Pencil の場合:**
+- `.pen` ファイルの存在を確認（`designs/*.pen` または記載パス）
+- Pencil MCP ツールが利用可能か確認（`batch_design`, `batch_get`, `get_screenshot` 等の存在チェック）
+- 利用可能: UIコンポーネント実装タスクで MCP 経由でデザインデータを取得・スクリーンショットで確認する
+- 利用不可: ユーザーに Pencil アプリの起動を促す（MCP サーバーは Pencil 起動時に自動開始）
+
 **Figma MCP の場合:**
 - Figma URL が記載されていることを確認
 - Figma MCP ツールが利用可能か確認（`mcp__figma` 系ツールの存在チェック）

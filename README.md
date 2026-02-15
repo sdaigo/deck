@@ -18,7 +18,7 @@ flowchart LR
 |:---|:---|:---|:---|
 | 基盤構築 | `/setup` | プロジェクトで1回 | `docs/` 永続ドキュメント 6種 |
 | 設計 | `/feature-design [機能名]` | 機能ごと | `.steering/` 作業ドキュメント |
-| UIデザイン | Figma / Pencil 等 (手動) | 機能ごと | `designs/` デザインファイル |
+| UIデザイン | Pencil / Figma 等 | 機能ごと | `.pen` ファイル or `designs/` |
 | 実装 | `/feature-implement` | 機能ごと | コード + テスト |
 
 ## 設計フェーズの詳細

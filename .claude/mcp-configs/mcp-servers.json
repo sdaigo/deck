@@ -23,6 +23,12 @@
   "_optionalServers": {
     "_comment": "以下はオプション。使用時は mcpServers にコピーし、.mcp.json にも追加する",
 
+    "pencil": {
+      "_setup": "Pencil アプリをインストールして起動するだけ（MCP サーバーは自動起動）",
+      "_description": "Pencil ベクターデザインツール。.pen ファイルは JSON ベースで Git 管理可能。MCP 経由で batch_design, batch_get, get_screenshot 等のツールを提供",
+      "_env": "環境変数不要。Pencil 起動時にローカル MCP サーバーが自動開始",
+      "_url": "https://pencil.dev"
+    },
     "figma-official": {
       "_setup": "claude mcp add --transport http figma https://mcp.figma.com/mcp",
       "_description": "Figma 公式リモート MCP。Figma URL を渡してデザインデータを取得。Dev Mode 推奨",

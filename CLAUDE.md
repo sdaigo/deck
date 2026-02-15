@@ -10,7 +10,7 @@
     ↓
 /feature-design     要件定義 + UX設計 + UXレビュー + ユーザー承認
     ↓
-[UIデザイン]         Figma/Pencil 等で外部作業（designs/ に配置）
+[UIデザイン]         Pencil/Figma 等でデザイン（MCP連携 or designs/ に配置）
     ↓
 /feature-implement  承認済み設計に基づく実装 + 自動コードレビュー
 ```

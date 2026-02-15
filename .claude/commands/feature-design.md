@@ -112,6 +112,7 @@ tasklist.md の承認後、UIデザインの作業依頼をまとめてユーザ
 
 | 方式 | 設定 | 実装時の参照方法 |
 |:---|:---|:---|
+| **Pencil** | Pencil アプリをインストール（MCP 自動起動） | `.pen` ファイルをプロジェクト内に配置 |
 | **Figma MCP** | `.mcp.json` に Figma MCP を追加 | Figma URL を ui-design-brief.md に記載 |
 | **ローカルファイル** | 設定不要 | エクスポート画像を `designs/` に配置 |
 
@@ -120,7 +121,10 @@ tasklist.md の承認後、UIデザインの作業依頼をまとめてユーザ
 ```markdown
 ## デザイン参照
 
-方式: [Figma MCP / ローカルファイル]
+方式: [Pencil / Figma MCP / ローカルファイル]
+
+<!-- Pencil の場合 -->
+デザインファイル: .steering/[日付]-[機能名]/designs/*.pen
 
 <!-- Figma MCP の場合 -->
 Figma URL: https://www.figma.com/design/XXXX/...
@@ -133,4 +137,9 @@ Figma URL: https://www.figma.com/design/XXXX/...
 
 このコマンドは **設計フェーズのみ** を実行する。
 実装に進む前に、UIデザイン（外部ツール）を完了させる必要がある。
+
+- **Pencil**: Claude Code と MCP 連携するベクターデザインツール。`.pen` ファイルは Git 管理可能
+- **Figma**: MCP 経由で Claude Code からデザインデータを参照可能
+- **その他**: デザインファイルをエクスポートして `designs/` に配置
+
 準備ができたら `/feature-implement` コマンドで実装を開始する。
