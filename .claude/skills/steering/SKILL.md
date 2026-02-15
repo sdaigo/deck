@@ -202,7 +202,24 @@ new_string: "- [x] StorageServiceを実装"
 TaskUpdate({ taskId: "対象ID", status: "completed" })
 ```
 
-**3-8. 次のタスクへ**
+**3-8. トップレベルタスク完了時にコミット**
+
+トップレベルのタスク（サブタスクではない）が完了したら、その時点でコミットする:
+
+- 変更されたファイルを `git add` する（関連ファイルのみ。`git add -A` は使わない）
+- Conventional Commits に従ったメッセージでコミット
+- tasklist.md の変更も含める（進捗が履歴に残る）
+
+```bash
+git add [変更ファイル] .steering/*/tasklist.md
+git commit -m "feat(scope): タスクの内容を簡潔に"
+```
+
+コミットしないケース:
+- サブタスクのみ完了した場合（親タスク完了時にまとめる）
+- テストやLintが失敗している場合（修正後にコミット）
+
+**3-9. 次のタスクへ**
 
 ステップ3-1に戻る。
 
@@ -290,6 +307,7 @@ TaskUpdate({ taskId: "対象ID", status: "completed" })
 - [ ] Editツールでtasklist.mdを更新したか？
 - [ ] テストを実行したか？
 - [ ] TaskUpdateで補助トラッキングを更新したか？
+- [ ] トップレベルタスクならコミットしたか？
 
 ### 全タスク完了後
 
