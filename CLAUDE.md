@@ -6,9 +6,11 @@
 設計と実装を意図的に分離し、AI の出力に人間の承認を挟む Human-in-the-Loop のワークフロー。
 
 ```
-/setup          プロジェクト基盤の構築（docs/ の永続ドキュメント）
+/setup              プロジェクト基盤の構築（docs/ の永続ドキュメント）
     ↓
-/feature-design 要件定義 + UX設計 + UXレビュー + ユーザー承認
+/feature-design     要件定義 + UX設計 + UXレビュー + ユーザー承認
+    ↓
+[UIデザイン]         Figma/Pencil 等で外部作業（designs/ に配置）
     ↓
 /feature-implement  承認済み設計に基づく実装 + 自動コードレビュー
 ```

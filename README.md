@@ -8,15 +8,17 @@ Claude Code の開発ワークフローをテンプレート化したもの。�
 flowchart LR
     A["/setup"] --> B["/feature-design"]
     B --> C{ユーザー承認}
-    C -->|承認| D["/feature-implement"]
     C -->|修正要求| B
-    D --> E[完成]
+    C -->|承認| D["UIデザイン<br/>(外部ツール)"]
+    D --> E["/feature-implement"]
+    E --> F[完成]
 ```
 
-| フェーズ | コマンド | 実行頻度 | 成果物 |
+| フェーズ | コマンド / 作業 | 実行頻度 | 成果物 |
 |:---|:---|:---|:---|
 | 基盤構築 | `/setup` | プロジェクトで1回 | `docs/` 永続ドキュメント 6種 |
 | 設計 | `/feature-design [機能名]` | 機能ごと | `.steering/` 作業ドキュメント |
+| UIデザイン | Figma / Pencil 等 (手動) | 機能ごと | `designs/` デザインファイル |
 | 実装 | `/feature-implement` | 機能ごと | コード + テスト |
 
 ## 設計フェーズの詳細
