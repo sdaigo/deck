@@ -6,13 +6,18 @@
 設計と実装を意図的に分離し、AI の出力に人間の承認を挟む Human-in-the-Loop のワークフロー。
 
 ```
+[機能開発]
 /setup              プロジェクト基盤の構築（docs/ の永続ドキュメント）
     ↓
 /feature-design     要件定義 + UX設計 + UXレビュー + ユーザー承認
     ↓
-[UIデザイン]         Pencil/Figma 等でデザイン（MCP連携 or designs/ に配置）
+[UIデザイン]         Pencil/Figma 等でデザイン（MCP連携 or docs/designs/ に配置）
     ↓
 /feature-implement  承認済み設計に基づく実装 + 自動コードレビュー
+
+[軽量修正]
+/patch              バグ修正・小規模改善（changeset.md + レビュー + テスト）
+/hotfix             緊急の軽微な修正（changeset.md + レビュー + テスト）
 ```
 
 ## 開発ワークフロー
@@ -37,7 +42,7 @@
 docs/                   永続ドキュメント（プロジェクト全体の設計）
   designs/              デザインファイル（.pen 等、機能横断で共有）
   proposals/            下書き・アイデア・技術調査メモ
-.steering/              作業単位のドキュメント（requirements, design, tasklist）
+.steering/              作業単位のドキュメント（feature / patch / hotfix）
 .claude/
   agents/               専門家エージェント定義（Taskツールで起動）
   rules/common/         汎用ルール（コーディング、テスト、Git、セキュリティ、ワークフロー）

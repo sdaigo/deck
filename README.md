@@ -14,12 +14,13 @@ flowchart LR
     E --> F[完成]
 ```
 
-| フェーズ | コマンド / 作業 | 実行頻度 | 成果物 |
+| 規模 | コマンド / 作業 | プロセス | 成果物 |
 |:---|:---|:---|:---|
-| 基盤構築 | `/setup` | プロジェクトで1回 | `docs/` 永続ドキュメント 6種 |
-| 設計 | `/feature-design [機能名]` | 機能ごと | `.steering/` 作業ドキュメント |
-| UIデザイン | Pencil (推奨) / Figma 等 | 機能ごと | `docs/designs/` |
-| 実装 | `/feature-implement` | 機能ごと | コード + テスト |
+| 基盤構築 | `/setup` | 対話的に永続ドキュメント生成 | `docs/` 6種 |
+| 機能開発 | `/feature-design` → `/feature-implement` | steering 一式、全レビュー、承認フロー | `.steering/[日付]-feature-*/` |
+| UIデザイン | Pencil (推奨) / Figma 等 | 外部ツールで作成 | `docs/designs/` |
+| パッチ | `/patch [説明]` | changeset.md + レビュー + テスト | `.steering/[日付]-patch-*/` |
+| ホットフィックス | `/hotfix [説明]` | changeset.md + レビュー + テスト | `.steering/[日付]-hotfix-*/` |
 
 ## 設計フェーズの詳細
 
@@ -108,7 +109,7 @@ graph TB
 docs/              永続ドキュメント（/setup で生成）
   designs/         デザインファイル（.pen 等、機能横断で共有）
   proposals/       下書き・アイデア・技術調査メモ
-.steering/         作業単位のドキュメント（/feature-design で生成）
+.steering/         作業単位のドキュメント（feature / patch / hotfix）
 ```
 
 ```mermaid
@@ -151,6 +152,8 @@ graph LR
 | `/setup` | 初回セットアップ（docs/ に 6 ファイル生成） |
 | `/feature-design` | 機能設計（.steering/ 生成 + UX レビュー） |
 | `/feature-implement` | 承認済み設計に基づく実装開始 |
+| `/patch` | 小規模なバグ修正・改善（軽量プロセス） |
+| `/hotfix` | 緊急の軽微な修正（最小プロセス） |
 | `/checkpoint` | 作業状態の記録 |
 | `/review-code` | code-reviewer + security-reviewer 並行実行 |
 | `/run-tests` | test-runner 起動 |
