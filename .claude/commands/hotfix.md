@@ -58,38 +58,13 @@ description: 緊急度の高い軽微な修正を最小プロセスで実行す�
 
 以下を**並行起動**する:
 
-### code-reviewer
+- code-reviewer (sonnet): hotfix レビュー。変更が最小限かつ副作用がないことを重点確認
+- test-runner (haiku): 変更に関連するテストを優先実行
 
-```
-Task({
-  subagent_type: "code-reviewer",
-  description: "code-reviewer: hotfix レビュー",
-  prompt: `
-    変更されたファイルをレビューしてください。
-    hotfix のため、変更が最小限かつ副作用がないことを重点的に確認してください。
-  `
-})
-```
-
-### test-runner
-
-```
-Task({
-  subagent_type: "test-runner",
-  description: "test-runner: hotfix テスト",
-  prompt: `
-    .claude/agents/test-runner.md を読み込み、テストを実行してください。
-    変更に関連するテストを優先的に実行してください。
-  `
-})
-```
-
-- レビュー指摘があれば修正する
-- テスト失敗があれば修正する
+レビュー指摘・テスト失敗があれば修正する。
 
 ## ステップ5: 完了
 
 1. changeset.md の完了チェックを更新する
-2. 変更ファイルと changeset.md をコミットする
-   - メッセージ: `fix: [修正内容]`
+2. 変更ファイルと changeset.md をコミットする（`fix: [修正内容]`）
 3. ユーザーに完了を報告し、マージ方法を確認する

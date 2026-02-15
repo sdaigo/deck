@@ -71,53 +71,16 @@ description: 小規模なバグ修正・改善を軽量プロセスで実行す�
 
 以下を**並行起動**する:
 
-### code-reviewer
+- code-reviewer (sonnet): patch レビュー。既存の動作への影響がないことを重点確認
+- security-reviewer (sonnet): セキュリティレビュー（認証・API・入力処理に関わる場合のみ）
+- test-runner (haiku): フルテスト実行
 
-```
-Task({
-  subagent_type: "code-reviewer",
-  description: "code-reviewer: patch レビュー",
-  prompt: `
-    変更されたファイルをレビューしてください。
-    patch のため、既存の動作への影響がないことを重点的に確認してください。
-  `
-})
-```
-
-### security-reviewer（認証・API・入力処理に関わる場合）
-
-```
-Task({
-  subagent_type: "security-reviewer",
-  description: "security-reviewer: patch セキュリティレビュー",
-  prompt: `
-    .claude/agents/security-reviewer.md を読み込み、ワークフローに従ってレビューしてください。
-    変更されたファイルを対象にしてください。
-  `
-})
-```
-
-### test-runner
-
-```
-Task({
-  subagent_type: "test-runner",
-  description: "test-runner: patch テスト",
-  prompt: `
-    .claude/agents/test-runner.md を読み込み、テストを実行してください。
-    モード: --full
-  `
-})
-```
-
-- レビュー指摘があれば修正する
-- テスト失敗があれば修正する
-- 修正後、再度レビュー・テストを実行する
+レビュー指摘・テスト失敗があれば修正し、再度レビュー・テストを実行する。
 
 ## ステップ5: 完了
 
 1. changeset.md の完了チェックを更新する
 2. 変更ファイルと changeset.md をコミットする
-   - メッセージ: `fix: [修正内容]`（バグ修正の場合）
-   - メッセージ: `refactor: [修正内容]`（リファクタの場合）
+   - バグ修正: `fix: [修正内容]`
+   - リファクタ: `refactor: [修正内容]`
 3. ユーザーに完了を報告し、マージ方法を確認する

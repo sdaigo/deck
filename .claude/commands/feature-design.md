@@ -21,22 +21,21 @@ description: 指定された機能の設計を開始し、.steering/ 内に作�
 ## ステップ2: プロジェクト理解
 
 1. `CLAUDE.md` を読み、プロジェクトの全体像を把握する
-2. `docs/` 内の以下を読み込む（全文ではなく設計判断に必要な範囲で）:
+2. `docs/` 内の以下を読み込む（設計判断に必要な範囲で）:
    - `docs/product-requirements.md` - 要求の全体像
    - `docs/architecture.md` - 技術的制約とレイヤー構成
    - `docs/glossary.md` - 用語の統一
 
 注意: `docs/functional-design.md`, `docs/development-guidelines.md`, `docs/project-structure.md` は、steering 計画モードやステップ6の planner がサブプロセスで個別に読み込むため、ここでは読まない。
 
-## ステップ3: 計画フェーズ（ステアリングファイルの生成）
+## ステップ3: 計画フェーズ
 
 1. `Skill('steering', args: '計画')` を実行し、requirements.md と design.md を生成する
-   - steering は tasklist.md のスケルトンも作成するが、詳細化はステップ6で planner が行う
 2. ユーザーの承認を得る
 
 ## ステップ4: ワイヤーフレーム作成
 
-design.md の承認後、`Skill('lofi-wireframer')` を実行してユーザーフローとワイヤーフレームを作成する:
+design.md の承認後、`Skill('lofi-wireframer')` を実行:
 
 - 出力先: `.steering/[日付]-[機能名]/prototypes/`
 - requirements.md と design.md を入力として渡す
@@ -44,56 +43,27 @@ design.md の承認後、`Skill('lofi-wireframer')` を実行してユーザー�
 
 ## ステップ5: UXレビュー
 
-ワイヤーフレームの承認後、ux-reviewer エージェントを起動してUX観点のレビューを行う:
+ワイヤーフレームの承認後、ux-reviewer (sonnet) を起動。対象:
+- `.steering/[日付]-[機能名]/requirements.md`
+- `.steering/[日付]-[機能名]/design.md`
+- `.steering/[日付]-[機能名]/prototypes/userflow.md`
+- `.steering/[日付]-[機能名]/prototypes/wireframe.excalidraw`
 
-```
-Task({
-  subagent_type: "general-purpose",
-  model: "sonnet",
-  description: "ux-reviewer: 機能設計のUXレビュー",
-  prompt: `
-    .claude/agents/ux-reviewer.md を読み込み、ワークフローに従ってレビューしてください。
-    対象:
-    - .steering/[日付]-[機能名]/requirements.md
-    - .steering/[日付]-[機能名]/design.md
-    - .steering/[日付]-[機能名]/prototypes/userflow.md
-    - .steering/[日付]-[機能名]/prototypes/wireframe.excalidraw
-  `
-})
-```
-
-- レビュー結果をユーザーに報告し、必要に応じて design.md やワイヤーフレームを修正する。
-- ユーザーの承認を得る
+レビュー結果をユーザーに報告し、必要に応じて design.md やワイヤーフレームを修正する。ユーザーの承認を得る。
 
 ## ステップ6: タスクリスト生成
 
-UXレビューの反映後、planner エージェントを起動して tasklist.md を生成する。
+UXレビューの反映後、planner (opus) を起動して tasklist.md を生成する。
 planner は Write 権限を持ち、tasklist.md に直接書き込む。メインへの出力転送は概要のみ。
 
-```
-Task({
-  subagent_type: "general-purpose",
-  model: "opus",
-  description: "planner: tasklist.md 生成",
-  prompt: `
-    .claude/agents/planner.md を読み込み、ワークフローに従って実装計画を策定してください。
+入力:
+- `.steering/[日付]-[機能名]/requirements.md`
+- `.steering/[日付]-[機能名]/design.md`
+- `.steering/[日付]-[機能名]/prototypes/userflow.md`
 
-    入力:
-    - .steering/[日付]-[機能名]/requirements.md
-    - .steering/[日付]-[機能名]/design.md
-    - .steering/[日付]-[機能名]/prototypes/userflow.md
-
-    出力先:
-    - .steering/[日付]-[機能名]/tasklist.md に Write ツールで直接書き込むこと
-
-    返却は概要のみ（フェーズ構成、タスク数、リスク）に留めてください。
-    tasklist.md の全文を返す必要はありません。
-  `
-})
-```
+出力先: `.steering/[日付]-[機能名]/tasklist.md`
 
 planner の概要報告を元にユーザーに報告し、承認を得る。
-詳細を確認する場合は tasklist.md を直接参照する。
 
 ## ステップ7: UIデザイン依頼
 
@@ -110,15 +80,11 @@ tasklist.md の承認後、UIデザインの作業依頼をまとめてユーザ
 
 ユーザーに以下の選択肢を提示する:
 
-| 方式 | 設定 | 実装時の参照方法 |
-|:---|:---|:---|
-| **Pencil** (推奨) | Pencil アプリをインストール（MCP 自動起動） | `docs/designs/*.pen` を MCP 経由で参照 |
-| **Figma MCP** | `.mcp.json` に Figma MCP を追加 | Figma URL を ui-design-brief.md に記載 |
-| **ローカルファイル** | 設定不要 | エクスポート画像を `docs/designs/` に配置 |
+- **Pencil** (推奨): MCP 自動起動。`docs/designs/*.pen` を MCP 経由で参照
+- **Figma MCP**: `.mcp.json` に Figma MCP を追加。Figma URL を ui-design-brief.md に記載
+- **ローカルファイル**: 設定不要。エクスポート画像を `docs/designs/` に配置
 
 デザインファイルは **`docs/designs/`** に配置する（機能横断で共有するため）。
-`.steering/` の ui-design-brief.md からは対象レイヤーやコンポーネント名で参照する。
-
 選択結果を ui-design-brief.md の「デザイン参照」セクションに記録する:
 
 ```markdown
@@ -140,10 +106,4 @@ Figma URL: https://www.figma.com/design/XXXX/...
 ## 補足
 
 このコマンドは **設計フェーズのみ** を実行する。
-実装に進む前に、UIデザイン（外部ツール）を完了させる必要がある。
-
-- **Pencil** (推奨): Claude Code と MCP 連携するベクターデザインツール。`.pen` ファイルは Git 管理可能
-- **Figma**: MCP 経由で Claude Code からデザインデータを参照可能
-- **その他**: デザインファイルをエクスポートして `docs/designs/` に配置
-
-準備ができたら `/feature-implement` コマンドで実装を開始する。
+UIデザイン完了後、`/feature-implement` で実装を開始する。

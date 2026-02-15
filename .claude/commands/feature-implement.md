@@ -29,24 +29,20 @@ description: 承認済みの設計に基づき、tasklist.mdに従って実装�
 `ui-design-brief.md` の「デザイン参照」セクションを読み、方式に応じて処理する:
 
 **Pencil の場合:**
-- `docs/designs/*.pen` の存在を確認（ui-design-brief.md に記載されたファイル名・レイヤー名を参照）
-- Pencil MCP ツールが利用可能か確認（`batch_design`, `batch_get`, `get_screenshot` 等の存在チェック）
-- 利用可能: ui-design-brief.md の対象レイヤーを MCP 経由で取得・スクリーンショットで確認する
-- 利用不可: ユーザーに Pencil アプリの起動を促す（MCP サーバーは Pencil 起動時に自動開始）
+- `docs/designs/*.pen` の存在を確認
+- Pencil MCP ツールが利用可能か確認（`batch_design`, `batch_get`, `get_screenshot` 等）
+- 利用可能: MCP 経由で取得、利用不可: ユーザーに Pencil 起動を促す
 
 **Figma MCP の場合:**
-- Figma URL が記載されていることを確認
-- Figma MCP ツールが利用可能か確認（`mcp__figma` 系ツールの存在チェック）
-- 利用可能: UIコンポーネント実装タスクで MCP 経由でデザインデータを取得する
-- 利用不可: ユーザーに Figma MCP の設定を促すか、ローカルファイル方式への切り替えを提案する
+- Figma URL の記載と MCP ツールの利用可能性を確認
+- 利用不可: ローカルファイル方式への切り替えを提案
 
 **ローカルファイルの場合:**
-- `docs/designs/` ディレクトリの存在を確認
-- 存在しない場合: デザインが未配置の可能性をユーザーに警告し、続行するか確認する
-- 存在する場合: デザインファイル一覧を報告する
+- `docs/designs/` の存在とファイル一覧を確認
+- 存在しない場合: デザイン未配置の可能性を警告
 
 **ui-design-brief.md が存在しない場合:**
-- UIデザインフェーズがスキップされた可能性をユーザーに伝え、続行するか確認する
+- UIデザインフェーズがスキップされた可能性を伝え、続行するか確認
 
 4. タスクリストの全体像をユーザーに報告し、開始の確認を得る
 
@@ -57,31 +53,19 @@ description: 承認済みの設計に基づき、tasklist.mdに従って実装�
 steeringスキルの実装モードに従い:
 - tasklist.md の未完了タスクを順に実装
 - 各タスク完了時に tasklist.md を更新
-- 各タスクでPROACTIVEエージェントを自動起動（steering実装モード ステップ3-6参照）
+- 各タスクでPROACTIVEエージェントを自動起動
 - 5タスクごとにセルフチェック
 
 ## ステップ3: フェーズ完了時
 
-各フェーズ完了時:
-1. test-runner エージェントを起動してテスト実行:
-   ```
-   Task({
-     subagent_type: "general-purpose",
-     model: "haiku",
-     description: "test-runner: フェーズ完了テスト",
-     prompt: `
-       .claude/agents/test-runner.md を読み込み、フルテストを実行してください。
-       モード: --full
-     `
-   })
-   ```
-2. テスト失敗時はステップ2に戻り修正する。全テスト通過するまで次に進まない
+1. test-runner (haiku) を起動してフルテスト実行
+2. テスト失敗時はステップ2に戻り修正。全テスト通過するまで次に進まない
 3. tasklist.md の進捗をユーザーに報告
 4. 次のフェーズへの承認を得る
 
 ## ステップ4: 全タスク完了
 
 1. tasklist.md の全タスクが `[x]` であることを確認
-2. test-runner エージェントを起動して最終テスト（上記と同じパターン）
+2. test-runner (haiku) で最終テスト
 3. `Skill('steering', args: '振り返り')` を実行し、振り返りを記録
 4. ユーザーに完了を報告
