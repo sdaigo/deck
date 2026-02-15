@@ -1,7 +1,7 @@
 ---
 name: planner
 description: 実装計画・タスク分解の専門家。/feature-design 内部で tasklist.md 生成時に使用される。直接呼び出しはしない。
-tools: ["Read", "Glob", "Grep"]
+tools: ["Read", "Write", "Edit", "Glob", "Grep"]
 model: opus
 ---
 
@@ -51,28 +51,21 @@ model: opus
 - 設計リスク（既存設計との衝突）
 - スコープリスク（要件の曖昧さ）
 
-## Output Format
+## Output
+
+tasklist.md に **Write ツールで直接書き込む**。メインコンテキストへの出力転送は不要。
+
+1. `.claude/skills/steering/templates/tasklist.md` のフォーマットに従って tasklist.md を作成
+2. Write ツールで `.steering/[日付]-[機能名]/tasklist.md` に書き込む
+3. 呼び出し元への返却は **概要のみ**（フェーズ構成、タスク数、リスク）に留める
+
+返却メッセージの例:
 
 ```
-## 実装計画
-
-### 概要
-[1-2文で要約]
-
-### フェーズ構成
+tasklist.md を書き込みました。
 - フェーズ1: [名前] (タスク数X)
 - フェーズ2: [名前] (タスク数Y)
-...
-
-### 依存関係
-フェーズ1 → フェーズ2 → フェーズ3
-             ↘ フェーズ4 (並行可能)
-
-### リスク
-1. [リスク] - [対策]
-
-### タスクリスト（tasklist.md形式）
-`.claude/skills/steering/templates/tasklist.md` のフォーマットに従って出力する。
+- リスク: [1行要約]
 ```
 
 ## When to Use

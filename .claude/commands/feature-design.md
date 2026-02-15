@@ -21,7 +21,12 @@ description: 指定された機能の設計を開始し、.steering/ 内に作�
 ## ステップ2: プロジェクト理解
 
 1. `CLAUDE.md` を読み、プロジェクトの全体像を把握する
-2. `docs/` ディレクトリ内の永続ドキュメントを確認し、関連する設計思想やアーキテクチャを理解する
+2. `docs/` 内の以下を読み込む（全文ではなく設計判断に必要な範囲で）:
+   - `docs/product-requirements.md` - 要求の全体像
+   - `docs/architecture.md` - 技術的制約とレイヤー構成
+   - `docs/glossary.md` - 用語の統一
+
+注意: `docs/functional-design.md`, `docs/development-guidelines.md`, `docs/project-structure.md` は、steering 計画モードやステップ6の planner がサブプロセスで個別に読み込むため、ここでは読まない。
 
 ## ステップ3: 計画フェーズ（ステアリングファイルの生成）
 
@@ -61,7 +66,8 @@ Task({
 
 ## ステップ6: タスクリスト生成
 
-UXレビューの反映後、planner エージェントを起動して tasklist.md を生成する:
+UXレビューの反映後、planner エージェントを起動して tasklist.md を生成する。
+planner は Write 権限を持ち、tasklist.md に直接書き込む。メインへの出力転送は概要のみ。
 
 ```
 Task({
@@ -76,13 +82,17 @@ Task({
     - .steering/[日付]-[機能名]/design.md
     - .steering/[日付]-[機能名]/prototypes/userflow.md
 
-    出力:
-    - .steering/[日付]-[機能名]/tasklist.md
+    出力先:
+    - .steering/[日付]-[機能名]/tasklist.md に Write ツールで直接書き込むこと
+
+    返却は概要のみ（フェーズ構成、タスク数、リスク）に留めてください。
+    tasklist.md の全文を返す必要はありません。
   `
 })
 ```
 
-生成された tasklist.md をユーザーに報告し、承認を得る。
+planner の概要報告を元にユーザーに報告し、承認を得る。
+詳細を確認する場合は tasklist.md を直接参照する。
 
 ## 補足
 
