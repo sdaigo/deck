@@ -14,7 +14,3 @@ Human-in-the-Loop ワークフロー: 設計と実装を分離し、AI出力に�
 - `[YYYYMMDD]-feature-[機能名]/` - 機能開発
 - `[YYYYMMDD]-patch-[修正名]/` - バグ修正・小規模改善
 - `[YYYYMMDD]-hotfix-[修正名]/` - 緊急軽微修正
-
-## 詳細
-
-プロジェクト構成、ワークフロー、エージェント、スキルの詳細は `README.md` を参照。
