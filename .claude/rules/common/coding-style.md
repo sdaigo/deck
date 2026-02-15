@@ -4,7 +4,7 @@
 
 ## フォーマッター
 
-**Biome** を使用。Edit/Write 後に hook で自動実行（`.claude/hooks/auto-format.sh`）。
+`docs/development-guidelines.md` で定義されたフォーマッターを使用。hook（`.claude/hooks/auto-format.sh`）が設定されている場合は Edit/Write 後に自動実行される。
 
 ## 命名規則
 

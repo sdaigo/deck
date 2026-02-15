@@ -223,9 +223,9 @@ flowchart LR
 
 ### 前提条件
 
-- [Bun](https://bun.sh)
-- [Biome](https://biomejs.dev)（`bun add -D @biomejs/biome`）
 - jq（フック内で JSON パースに使用）
+
+ランタイム・パッケージマネージャ・Linter 等は `/setup` 時に `docs/development-guidelines.md` で定義する。
 
 ## ライセンス
 

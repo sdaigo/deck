@@ -91,20 +91,7 @@ TaskUpdate({ taskId: "対象ID", status: "in_progress" })
 
 **3-4. テストを実行**
 
-実装完了後、関連するテストを実行する:
-
-```bash
-# ユニットテスト（対象ファイル）
-bunx vitest run [テスト対象パス]
-
-# 型チェック
-bunx tsc --noEmit
-
-# Lint
-bunx biome check [対象パス]
-```
-
-テストが失敗した場合は修正してから次に進む。
+実装完了後、`docs/development-guidelines.md` に定義されたテスト・型チェック・Lint コマンドを実行する。テストが失敗した場合は修正してから次に進む。
 
 **3-5. PROACTIVE エージェント起動**
 

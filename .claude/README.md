@@ -121,6 +121,6 @@
 
 ### 前提条件
 
-- Bun（https://bun.sh）
-- Biome（`bun add -D @biomejs/biome`）
 - jq（フック内で JSON パースに使用）
+
+ランタイム・パッケージマネージャ・Linter 等は `/setup` 時に `docs/development-guidelines.md` で定義する。

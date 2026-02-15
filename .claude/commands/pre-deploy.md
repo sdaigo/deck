@@ -19,21 +19,13 @@ description: デプロイ前のゲートチェックを実行する
 
 以下を順に実行し、結果をサマリーに記録する:
 
-### 2-1. テスト
+### 2-1. テスト・Lint
 
-```bash
-bunx vitest run
-bunx tsc --noEmit
-bunx biome check .
-```
+`docs/development-guidelines.md` に定義されたテスト・型チェック・Lint コマンドを実行する。
 
 ### 2-2. ビルド
 
-```bash
-bun run build
-```
-
-ビルドエラーがある場合はここで中断する。
+`docs/development-guidelines.md` に定義されたビルドコマンドを実行する。ビルドエラーがある場合はここで中断する。
 
 ### 2-3. 環境変数チェック
 

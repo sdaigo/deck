@@ -16,11 +16,9 @@ description: 初回セットアップ: 永続ドキュメントを対話的に�
 以下のコマンドで必須ツールの存在を確認する。不足があればユーザーに通知し、インストールを案内する:
 
 ```bash
-bun --version    # Bun（パッケージマネージャ・ランタイム）
 jq --version     # jq（フック内のJSONパースに使用）
 ```
 
-- **Bun**: https://bun.sh (`curl -fsSL https://bun.sh/install | bash`)
 - **jq**: https://jqlang.github.io/jq/ (`brew install jq`)
 
 全ツールが揃っていることを確認してから次に進む。
