@@ -35,6 +35,7 @@
 
 ```
 docs/                   永続ドキュメント（プロジェクト全体の設計）
+  designs/              デザインファイル（.pen 等、機能横断で共有）
   proposals/            下書き・アイデア・技術調査メモ
 .steering/              作業単位のドキュメント（requirements, design, tasklist）
 .claude/

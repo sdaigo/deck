@@ -18,7 +18,7 @@ flowchart LR
 |:---|:---|:---|:---|
 | 基盤構築 | `/setup` | プロジェクトで1回 | `docs/` 永続ドキュメント 6種 |
 | 設計 | `/feature-design [機能名]` | 機能ごと | `.steering/` 作業ドキュメント |
-| UIデザイン | Pencil / Figma 等 | 機能ごと | `.pen` ファイル or `designs/` |
+| UIデザイン | Pencil (推奨) / Figma 等 | 機能ごと | `docs/designs/` |
 | 実装 | `/feature-implement` | 機能ごと | コード + テスト |
 
 ## 設計フェーズの詳細
@@ -106,6 +106,7 @@ graph TB
   skills/          対話的ガイド（メインコンテキストに読み込み）
   settings.json    権限・フック設定
 docs/              永続ドキュメント（/setup で生成）
+  designs/         デザインファイル（.pen 等、機能横断で共有）
   proposals/       下書き・アイデア・技術調査メモ
 .steering/         作業単位のドキュメント（/feature-design で生成）
 ```

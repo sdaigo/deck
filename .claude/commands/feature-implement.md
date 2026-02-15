@@ -29,9 +29,9 @@ description: 承認済みの設計に基づき、tasklist.mdに従って実装�
 `ui-design-brief.md` の「デザイン参照」セクションを読み、方式に応じて処理する:
 
 **Pencil の場合:**
-- `.pen` ファイルの存在を確認（`designs/*.pen` または記載パス）
+- `docs/designs/*.pen` の存在を確認（ui-design-brief.md に記載されたファイル名・レイヤー名を参照）
 - Pencil MCP ツールが利用可能か確認（`batch_design`, `batch_get`, `get_screenshot` 等の存在チェック）
-- 利用可能: UIコンポーネント実装タスクで MCP 経由でデザインデータを取得・スクリーンショットで確認する
+- 利用可能: ui-design-brief.md の対象レイヤーを MCP 経由で取得・スクリーンショットで確認する
 - 利用不可: ユーザーに Pencil アプリの起動を促す（MCP サーバーは Pencil 起動時に自動開始）
 
 **Figma MCP の場合:**
@@ -41,7 +41,7 @@ description: 承認済みの設計に基づき、tasklist.mdに従って実装�
 - 利用不可: ユーザーに Figma MCP の設定を促すか、ローカルファイル方式への切り替えを提案する
 
 **ローカルファイルの場合:**
-- `designs/` ディレクトリの存在を確認
+- `docs/designs/` ディレクトリの存在を確認
 - 存在しない場合: デザインが未配置の可能性をユーザーに警告し、続行するか確認する
 - 存在する場合: デザインファイル一覧を報告する
 

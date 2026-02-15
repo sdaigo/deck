@@ -112,9 +112,12 @@ tasklist.md の承認後、UIデザインの作業依頼をまとめてユーザ
 
 | 方式 | 設定 | 実装時の参照方法 |
 |:---|:---|:---|
-| **Pencil** | Pencil アプリをインストール（MCP 自動起動） | `.pen` ファイルをプロジェクト内に配置 |
+| **Pencil** (推奨) | Pencil アプリをインストール（MCP 自動起動） | `docs/designs/*.pen` を MCP 経由で参照 |
 | **Figma MCP** | `.mcp.json` に Figma MCP を追加 | Figma URL を ui-design-brief.md に記載 |
-| **ローカルファイル** | 設定不要 | エクスポート画像を `designs/` に配置 |
+| **ローカルファイル** | 設定不要 | エクスポート画像を `docs/designs/` に配置 |
+
+デザインファイルは **`docs/designs/`** に配置する（機能横断で共有するため）。
+`.steering/` の ui-design-brief.md からは対象レイヤーやコンポーネント名で参照する。
 
 選択結果を ui-design-brief.md の「デザイン参照」セクションに記録する:
 
@@ -124,13 +127,14 @@ tasklist.md の承認後、UIデザインの作業依頼をまとめてユーザ
 方式: [Pencil / Figma MCP / ローカルファイル]
 
 <!-- Pencil の場合 -->
-デザインファイル: .steering/[日付]-[機能名]/designs/*.pen
+デザインファイル: docs/designs/[ファイル名].pen
+対象レイヤー: [この機能で実装する画面・コンポーネントのレイヤー名]
 
 <!-- Figma MCP の場合 -->
 Figma URL: https://www.figma.com/design/XXXX/...
 
 <!-- ローカルファイルの場合 -->
-配置先: .steering/[日付]-[機能名]/designs/
+配置先: docs/designs/
 ```
 
 ## 補足
@@ -138,8 +142,8 @@ Figma URL: https://www.figma.com/design/XXXX/...
 このコマンドは **設計フェーズのみ** を実行する。
 実装に進む前に、UIデザイン（外部ツール）を完了させる必要がある。
 
-- **Pencil**: Claude Code と MCP 連携するベクターデザインツール。`.pen` ファイルは Git 管理可能
+- **Pencil** (推奨): Claude Code と MCP 連携するベクターデザインツール。`.pen` ファイルは Git 管理可能
 - **Figma**: MCP 経由で Claude Code からデザインデータを参照可能
-- **その他**: デザインファイルをエクスポートして `designs/` に配置
+- **その他**: デザインファイルをエクスポートして `docs/designs/` に配置
 
 準備ができたら `/feature-implement` コマンドで実装を開始する。
