@@ -18,5 +18,23 @@
       "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
       "description": "Chain-of-thought reasoning"
     }
+  },
+
+  "_optionalServers": {
+    "_comment": "以下はオプション。使用時は mcpServers にコピーし、.mcp.json にも追加する",
+
+    "figma-official": {
+      "_setup": "claude mcp add --transport http figma https://mcp.figma.com/mcp",
+      "_description": "Figma 公式リモート MCP。Figma URL を渡してデザインデータを取得。Dev Mode 推奨",
+      "_env": "ブラウザで Figma OAuth 認証"
+    },
+    "figma-npm": {
+      "command": "npx",
+      "args": ["-y", "figma-developer-mcp"],
+      "env": {
+        "FIGMA_API_KEY": "${FIGMA_API_KEY}"
+      },
+      "_description": "npm 経由の Figma MCP。REST API でデザインデータ取得。レスポンスを簡素化して返す"
+    }
   }
 }

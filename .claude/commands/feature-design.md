@@ -104,23 +104,33 @@ tasklist.md の承認後、UIデザインの作業依頼をまとめてユーザ
 1. **デザイン対象画面の一覧** - wireframe と userflow から抽出
 2. **各画面の要件** - design.md から主要なインタラクションと状態を抜粋
 3. **参照ファイル** - wireframe、userflow のパスを明記
-4. **デザインファイルの配置先** - `.steering/[日付]-[機能名]/designs/`
+4. **デザイン参照方法** - 以下のいずれかをユーザーに選択してもらう
 
-ユーザーへの報告例:
+### デザイン参照方法の選択
 
-```
-設計フェーズが完了しました。
+ユーザーに以下の選択肢を提示する:
 
-次のステップ: UIデザイン（Figma/Pencil 等の外部ツールで作業）
-- デザイン依頼: .steering/[日付]-[機能名]/ui-design-brief.md
-- 参考: .steering/[日付]-[機能名]/prototypes/
+| 方式 | 設定 | 実装時の参照方法 |
+|:---|:---|:---|
+| **Figma MCP** | `.mcp.json` に Figma MCP を追加 | Figma URL を ui-design-brief.md に記載 |
+| **ローカルファイル** | 設定不要 | エクスポート画像を `designs/` に配置 |
 
-デザイン完了後、デザインファイルを .steering/[日付]-[機能名]/designs/ に配置してください。
-その後 `/feature-implement` で実装を開始できます。
+選択結果を ui-design-brief.md の「デザイン参照」セクションに記録する:
+
+```markdown
+## デザイン参照
+
+方式: [Figma MCP / ローカルファイル]
+
+<!-- Figma MCP の場合 -->
+Figma URL: https://www.figma.com/design/XXXX/...
+
+<!-- ローカルファイルの場合 -->
+配置先: .steering/[日付]-[機能名]/designs/
 ```
 
 ## 補足
 
 このコマンドは **設計フェーズのみ** を実行する。
 実装に進む前に、UIデザイン（外部ツール）を完了させる必要がある。
-デザインファイル配置後、`/feature-implement` コマンドで実装を開始する。
+準備ができたら `/feature-implement` コマンドで実装を開始する。
