@@ -56,13 +56,13 @@
   - [x] 開発サーバーで Tailwind のユーティリティクラスが適用されることを確認
   - [x] commit: `feat(config): add Tailwind CSS 4 with Vite plugin`
 
-- [ ] Biome 2 の導入と設定
-  - [ ] `npm install -D --exact @biomejs/biome` でインストール
-  - [ ] `npx biome init` で `biome.json` を生成
-  - [ ] `biome.json` を編集: インデント 2 スペース、行の長さ 100、セミコロンなし、ダブルクォート
-  - [ ] `npx biome check src/` でエラーなく実行できることを確認
-  - [ ] `npx biome check --write src/` で既存ファイルをフォーマット
-  - [ ] commit: `feat(config): add Biome 2 linter and formatter`
+- [x] Biome 2 の導入と設定
+  - [x] `npm install -D --exact @biomejs/biome` でインストール
+  - [x] `npx biome init` で `biome.json` を生成
+  - [x] `biome.json` を編集: インデント 2 スペース、行の長さ 100、セミコロンなし、ダブルクォート
+  - [x] `npx biome check src/` でエラーなく実行できることを確認
+  - [x] `npx biome check --write src/` で既存ファイルをフォーマット
+  - [x] commit: `feat(config): add Biome 2 linter and formatter`
 
 - [ ] TypeScript パスエイリアスの設定
   - [ ] `tsconfig.json`（または `tsconfig.app.json`）に `baseUrl: "."` と `paths: { "@/*": ["src/*"] }` を追加
