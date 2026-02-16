@@ -48,13 +48,13 @@
   - [x] Vite が生成した不要ファイルを削除（`src/App.css`, `src/assets/`, デフォルトの SVG 等）
   - [x] commit: `feat(config): initialize Vite React TypeScript project`
 
-- [ ] Tailwind CSS 4 の導入と設定
-  - [ ] `npm install -D tailwindcss @tailwindcss/vite` でインストール
-  - [ ] `vite.config.ts` に Tailwind CSS Vite プラグインを追加
-  - [ ] `src/index.css` を Tailwind ディレクティブ（`@import "tailwindcss"` ）のみに書き換え
-  - [ ] `src/main.tsx` から `index.css` をインポートしていることを確認
-  - [ ] 開発サーバーで Tailwind のユーティリティクラスが適用されることを確認
-  - [ ] commit: `feat(config): add Tailwind CSS 4 with Vite plugin`
+- [x] Tailwind CSS 4 の導入と設定
+  - [x] `npm install -D tailwindcss @tailwindcss/vite` でインストール
+  - [x] `vite.config.ts` に Tailwind CSS Vite プラグインを追加
+  - [x] `src/index.css` を Tailwind ディレクティブ（`@import "tailwindcss"` ）のみに書き換え
+  - [x] `src/main.tsx` から `index.css` をインポートしていることを確認
+  - [x] 開発サーバーで Tailwind のユーティリティクラスが適用されることを確認
+  - [x] commit: `feat(config): add Tailwind CSS 4 with Vite plugin`
 
 - [ ] Biome 2 の導入と設定
   - [ ] `npm install -D --exact @biomejs/biome` でインストール
