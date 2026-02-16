@@ -84,6 +84,16 @@ tasklist.md の承認後、UIデザインの作業依頼をまとめてユーザ
 - **Figma MCP**: `.mcp.json` に Figma MCP を追加。Figma URL を ui-design-brief.md に記載
 - **ローカルファイル**: 設定不要。エクスポート画像を `docs/designs/` に配置
 
+### Pencil MCP 接続の前提条件
+
+Pencil を選択した場合、デザイン作業の前に以下を確認する:
+
+1. **Pencil デスクトップアプリが起動していること** - MCP は WebSocket で Pencil アプリに接続するため、アプリが起動していないと全ツールが失敗する
+2. **ユーザーに .pen ファイルを開いてもらうこと** - `open docs/designs/[ファイル名].pen` をユーザーに依頼し、Pencil アプリ上でファイルが開かれた状態にする
+3. **接続確認** - `get_editor_state` が正常に応答することを確認してからデザイン作業を開始する
+
+接続に失敗した場合は、ユーザーに上記1-2の手順を案内する。
+
 デザインファイルは **`docs/designs/`** に配置する（機能横断で共有するため）。
 選択結果を ui-design-brief.md の「デザイン参照」セクションに記録する:
 
