@@ -133,11 +133,11 @@
   - [x] barrel file（`src/lib/storage/index.ts`）を作成
   - [x] commit: `feat(storage): add todoStorage interface with stub implementation`
 
-- [ ] todoValidator の interface 実装（`src/lib/validators/todo-validator.ts`）
-  - [ ] `validateTitle` 関数の型定義とスタブ実装（常に true を返す）
-  - [ ] `validateTodo` 関数の型定義とスタブ実装（常に true を返す）
-  - [ ] barrel file（`src/lib/validators/index.ts`）を作成
-  - [ ] commit: `feat(validators): add todoValidator interface with stub implementation`
+- [x] todoValidator の interface 実装（`src/lib/validators/todo-validator.ts`）
+  - [x] `validateTitle` 関数の型定義とスタブ実装（常に true を返す）
+  - [x] `validateTodo` 関数の型定義とスタブ実装（常に true を返す）
+  - [x] barrel file（`src/lib/validators/index.ts`）を作成
+  - [x] commit: `feat(validators): add todoValidator interface with stub implementation`
 
 - [ ] フェーズ2のテスト実行
   - [ ] `npx biome check src/` でエラーなし
