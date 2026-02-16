@@ -87,10 +87,10 @@
   - [x] `npx playwright test` で smoke test が pass することを確認
   - [x] commit: `feat(config): add Playwright E2E testing`
 
-- [ ] index.html の CSP 設定
-  - [ ] `index.html` の `<head>` に CSP meta タグを追加: `default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'`
-  - [ ] 開発サーバーで CSP エラーが出ないことを確認
-  - [ ] commit: `feat(config): add Content Security Policy meta tag`
+- [x] index.html の CSP 設定
+  - [x] `index.html` の `<head>` に CSP meta タグを追加: `default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'`
+  - [x] 開発サーバーで CSP エラーが出ないことを確認
+  - [x] commit: `feat(config): add Content Security Policy meta tag`
 
 - [ ] フェーズ1のテスト実行
   - [ ] `npx biome check src/` でエラーなし
