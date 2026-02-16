@@ -70,13 +70,13 @@
   - [x] 動作確認: 既存の `import` を `@/` 形式に書き換えてビルドが通ることを確認
   - [x] commit: `feat(config): configure path alias @/ to src/`
 
-- [ ] Vitest + Testing Library の導入と設定
-  - [ ] `npm install -D vitest @testing-library/react @testing-library/jest-dom @testing-library/user-event jsdom` でインストール
-  - [ ] `vite.config.ts` に Vitest 設定を追加（`test.environment: "jsdom"`, `test.globals: true`, `test.setupFiles`）
-  - [ ] テストセットアップファイル（`src/test-setup.ts`）を作成し `@testing-library/jest-dom` をインポート
-  - [ ] `tsconfig.app.json` の `include` にテストファイルパターンを追加（必要に応じて）
-  - [ ] サンプルテスト（`src/app.test.tsx`）を作成し `npx vitest run` で pass することを確認
-  - [ ] commit: `feat(config): add Vitest and Testing Library`
+- [x] Vitest + Testing Library の導入と設定
+  - [x] `npm install -D vitest @testing-library/react @testing-library/jest-dom @testing-library/user-event jsdom` でインストール
+  - [x] `vite.config.ts` に Vitest 設定を追加（`test.environment: "jsdom"`, `test.globals: true`, `test.setupFiles`）
+  - [x] テストセットアップファイル（`src/test-setup.ts`）を作成し `@testing-library/jest-dom` をインポート
+  - [x] `tsconfig.app.json` の `types` に `vitest/globals` を追加
+  - [x] サンプルテスト（`src/app.test.tsx`）を作成し `npx vitest run` で pass することを確認
+  - [x] commit: `feat(config): add Vitest and Testing Library`
 
 - [ ] Playwright の導入と設定
   - [ ] `npm install -D @playwright/test` でインストール
