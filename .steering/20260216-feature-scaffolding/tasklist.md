@@ -78,14 +78,14 @@
   - [x] サンプルテスト（`src/app.test.tsx`）を作成し `npx vitest run` で pass することを確認
   - [x] commit: `feat(config): add Vitest and Testing Library`
 
-- [ ] Playwright の導入と設定
-  - [ ] `npm install -D @playwright/test` でインストール
-  - [ ] `npx playwright install --with-deps chromium` で Chromium ブラウザをインストール
-  - [ ] `playwright.config.ts` を作成（`testDir: "e2e"`, `webServer` で dev サーバー起動設定）
-  - [ ] `e2e/` ディレクトリと `e2e/helpers/` ディレクトリを作成
-  - [ ] smoke test（`e2e/smoke.spec.ts`）を作成: アプリにアクセスしてタイトルが表示されることを確認
-  - [ ] `npx playwright test` で smoke test が pass することを確認
-  - [ ] commit: `feat(config): add Playwright E2E testing`
+- [x] Playwright の導入と設定
+  - [x] `npm install -D @playwright/test` でインストール
+  - [x] `npx playwright install --with-deps chromium` で Chromium ブラウザをインストール
+  - [x] `playwright.config.ts` を作成（`testDir: "e2e"`, `webServer` で dev サーバー起動設定）
+  - [x] `e2e/` ディレクトリと `e2e/helpers/` ディレクトリを作成
+  - [x] smoke test（`e2e/smoke.spec.ts`）を作成: アプリにアクセスしてタイトルが表示されることを確認
+  - [x] `npx playwright test` で smoke test が pass することを確認
+  - [x] commit: `feat(config): add Playwright E2E testing`
 
 - [ ] index.html の CSP 設定
   - [ ] `index.html` の `<head>` に CSP meta タグを追加: `default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'`
