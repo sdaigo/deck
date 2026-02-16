@@ -206,19 +206,19 @@
   - [x] `npx vitest run src/components/error-fallback/error-fallback.test.tsx` で全テスト pass
   - [x] commit: `feat(ui): implement ErrorFallback component`
 
-- [ ] App コンポーネントと Error Boundary の実装
-  - [ ] `src/app.tsx` に Error Boundary をクラスコンポーネントとして実装（プライベート、ファイル内のみ）
-  - [ ] Error Boundary が ErrorFallback を表示するように設定
-  - [ ] Error Boundary の `onReset` で `window.location.reload()` を呼ぶ
-  - [ ] App コンポーネントのレイアウト: ヘッダー（「SimpleTodo」）+ メインエリア
-  - [ ] Tailwind CSS で `max-w-lg mx-auto` のセンタリングレイアウトを適用
-  - [ ] Toast 表示領域を App に配置（useToast フックを使用）
-  - [ ] `src/main.tsx` を更新し App コンポーネントをレンダリング
-  - [ ] `src/app.test.tsx` を作成（既存のサンプルテストを置き換え）
-  - [ ] テスト: App コンポーネントが「SimpleTodo」ヘッダーを表示する
-  - [ ] テスト: Error Boundary がエラー発生時に ErrorFallback を表示する
-  - [ ] `npx vitest run src/app.test.tsx` で全テスト pass
-  - [ ] commit: `feat(ui): implement App component with Error Boundary`
+- [x] App コンポーネントと Error Boundary の実装
+  - [x] `src/app.tsx` に Error Boundary をクラスコンポーネントとして実装（プライベート、ファイル内のみ）
+  - [x] Error Boundary が ErrorFallback を表示するように設定
+  - [x] Error Boundary の `onReset` で `window.location.reload()` を呼ぶ
+  - [x] App コンポーネントのレイアウト: ヘッダー（「SimpleTodo」）+ メインエリア
+  - [x] Tailwind CSS で `max-w-lg mx-auto` のセンタリングレイアウトを適用
+  - [x] Toast 表示領域を App に配置（useToast フックを使用）
+  - [x] `src/main.tsx` を更新し App コンポーネントをレンダリング
+  - [x] `src/app.test.tsx` を作成（既存のサンプルテストを置き換え）
+  - [x] テスト: App コンポーネントが「SimpleTodo」ヘッダーを表示する
+  - [x] テスト: Error Boundary がエラー発生時に ErrorFallback を表示する
+  - [x] `npx vitest run src/app.test.tsx` で全テスト pass
+  - [x] commit: `feat(ui): implement App component with Error Boundary`
 
 - [ ] フェーズ3のテスト実行
   - [ ] `npx biome check src/` でエラーなし
