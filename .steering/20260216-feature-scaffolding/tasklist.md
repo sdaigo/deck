@@ -41,12 +41,12 @@
 
 ## フェーズ1: プロジェクト初期化と設定
 
-- [ ] Vite プロジェクトの作成と基本依存のインストール
-  - [ ] `npm create vite@latest . -- --template react-ts` でプロジェクト作成（既存の docs/ 等を維持）
-  - [ ] `npm install` で初期依存をインストール
-  - [ ] `npm run dev` で開発サーバーが起動することを確認
-  - [ ] Vite が生成した不要ファイルを削除（`src/App.css`, `src/assets/`, デフォルトの SVG 等）
-  - [ ] commit: `feat(config): initialize Vite React TypeScript project`
+- [x] Vite プロジェクトの作成と基本依存のインストール
+  - [x] `npm create vite@latest . -- --template react-ts` でプロジェクト作成（既存の docs/ 等を維持）
+  - [x] `npm install` で初期依存をインストール
+  - [x] `npm run dev` で開発サーバーが起動することを確認
+  - [x] Vite が生成した不要ファイルを削除（`src/App.css`, `src/assets/`, デフォルトの SVG 等）
+  - [x] commit: `feat(config): initialize Vite React TypeScript project`
 
 - [ ] Tailwind CSS 4 の導入と設定
   - [ ] `npm install -D tailwindcss @tailwindcss/vite` でインストール
