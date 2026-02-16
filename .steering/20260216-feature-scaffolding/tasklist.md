@@ -111,18 +111,18 @@
   - [x] `docs/project-structure.md` のディレクトリ構成と一致していることを確認
   - [x] commit: `feat: create directory structure per project-structure.md`
 
-- [ ] 型定義ファイルの作成（`src/types/todo.ts`）
-  - [ ] `Todo` 型を定義（id, title, completed, createdAt を全て readonly）
-  - [ ] `FilterType` 型を定義（`"all" | "active" | "completed"`）
-  - [ ] `ToastType` 型を定義（`"error" | "warning" | "info"`）
-  - [ ] `ToastMessage` 型を定義（id, type, message を全て readonly）
-  - [ ] `StorageSchema` 型を定義（todos, version を全て readonly）
-  - [ ] `ErrorFallbackProps` 型を定義（error, onReset）
-  - [ ] `ToastProps` 型を定義（messages, onDismiss）
-  - [ ] `UseToastReturn` 型を定義（messages, showToast, dismissToast）
-  - [ ] `TodoStorage` 型を定義（load, save）
-  - [ ] `docs/functional-design.md` のデータモデルと一致していることを確認
-  - [ ] commit: `feat(types): add Todo, FilterType, ToastMessage, StorageSchema types`
+- [x] 型定義ファイルの作成（`src/types/todo.ts`）
+  - [x] `Todo` 型を定義（id, title, completed, createdAt を全て readonly）
+  - [x] `FilterType` 型を定義（`"all" | "active" | "completed"`）
+  - [x] `ToastType` 型を定義（`"error" | "warning" | "info"`）
+  - [x] `ToastMessage` 型を定義（id, type, message を全て readonly）
+  - [x] `StorageSchema` 型を定義（todos, version を全て readonly）
+  - [x] `ErrorFallbackProps` 型を定義（error, onReset）
+  - [x] `ToastProps` 型を定義（messages, onDismiss）
+  - [x] `UseToastReturn` 型を定義（messages, showToast, dismissToast）
+  - [x] `TodoStorage` 型を定義（load, save）
+  - [x] `docs/functional-design.md` のデータモデルと一致していることを確認
+  - [x] commit: `feat(types): add Todo, FilterType, ToastMessage, StorageSchema types`
 
 - [ ] todoStorage の interface 実装（`src/lib/storage/todo-storage.ts`）
   - [ ] `STORAGE_KEY` 定数を定義（`"simpletodo:data"`）
