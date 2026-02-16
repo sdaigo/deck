@@ -64,11 +64,11 @@
   - [x] `npx biome check --write src/` で既存ファイルをフォーマット
   - [x] commit: `feat(config): add Biome 2 linter and formatter`
 
-- [ ] TypeScript パスエイリアスの設定
-  - [ ] `tsconfig.json`（または `tsconfig.app.json`）に `baseUrl: "."` と `paths: { "@/*": ["src/*"] }` を追加
-  - [ ] `vite.config.ts` に `resolve.alias` で `@` → `src/` を設定
-  - [ ] 動作確認: 既存の `import` を `@/` 形式に書き換えてビルドが通ることを確認
-  - [ ] commit: `feat(config): configure path alias @/ to src/`
+- [x] TypeScript パスエイリアスの設定
+  - [x] `tsconfig.json`（または `tsconfig.app.json`）に `baseUrl: "."` と `paths: { "@/*": ["src/*"] }` を追加
+  - [x] `vite.config.ts` に `resolve.alias` で `@` → `src/` を設定
+  - [x] 動作確認: 既存の `import` を `@/` 形式に書き換えてビルドが通ることを確認
+  - [x] commit: `feat(config): configure path alias @/ to src/`
 
 - [ ] Vitest + Testing Library の導入と設定
   - [ ] `npm install -D vitest @testing-library/react @testing-library/jest-dom @testing-library/user-event jsdom` でインストール
