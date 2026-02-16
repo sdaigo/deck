@@ -41,37 +41,37 @@ describe("ErrorFallback", () => {
     confirmSpy.mockRestore()
   })
 
-  it("confirm で OK 時に localStorage がクリアされ onReset が呼ばれる", async () => {
+  it("confirm で OK 時に localStorage から該当キーのみ削除され onReset が呼ばれる", async () => {
     const onReset = vi.fn()
     vi.spyOn(window, "confirm").mockReturnValue(true)
-    const clearSpy = vi.spyOn(Storage.prototype, "clear")
+    const removeItemSpy = vi.spyOn(Storage.prototype, "removeItem")
 
     render(<ErrorFallback error={new Error("test")} onReset={onReset} />)
 
     const user = userEvent.setup()
     await user.click(screen.getByRole("button", { name: "データをリセット" }))
 
-    expect(clearSpy).toHaveBeenCalled()
+    expect(removeItemSpy).toHaveBeenCalledWith("simpletodo:data")
     expect(onReset).toHaveBeenCalled()
 
-    clearSpy.mockRestore()
+    removeItemSpy.mockRestore()
     vi.restoreAllMocks()
   })
 
-  it("confirm でキャンセル時に localStorage がクリアされない", async () => {
+  it("confirm でキャンセル時に localStorage が変更されない", async () => {
     const onReset = vi.fn()
     vi.spyOn(window, "confirm").mockReturnValue(false)
-    const clearSpy = vi.spyOn(Storage.prototype, "clear")
+    const removeItemSpy = vi.spyOn(Storage.prototype, "removeItem")
 
     render(<ErrorFallback error={new Error("test")} onReset={onReset} />)
 
     const user = userEvent.setup()
     await user.click(screen.getByRole("button", { name: "データをリセット" }))
 
-    expect(clearSpy).not.toHaveBeenCalled()
+    expect(removeItemSpy).not.toHaveBeenCalled()
     expect(onReset).not.toHaveBeenCalled()
 
-    clearSpy.mockRestore()
+    removeItemSpy.mockRestore()
     vi.restoreAllMocks()
   })
 })

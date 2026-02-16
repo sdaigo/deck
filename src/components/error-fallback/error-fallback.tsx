@@ -1,8 +1,9 @@
+import { STORAGE_KEY } from "@/lib/storage"
 import type { ErrorFallbackProps } from "@/types/todo"
 
 export function ErrorFallback({ error, onReset }: ErrorFallbackProps): React.ReactElement {
   if (import.meta.env.DEV) {
-    console.error(error.message)
+    console.error(error)
   }
 
   const handleReload = (): void => {
@@ -12,7 +13,7 @@ export function ErrorFallback({ error, onReset }: ErrorFallbackProps): React.Rea
   const handleReset = (): void => {
     const confirmed = window.confirm("すべてのデータが削除されます。よろしいですか？")
     if (!confirmed) return
-    localStorage.clear()
+    localStorage.removeItem(STORAGE_KEY)
     onReset()
   }
 
