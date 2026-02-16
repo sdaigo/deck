@@ -92,24 +92,24 @@
   - [x] 開発サーバーで CSP エラーが出ないことを確認
   - [x] commit: `feat(config): add Content Security Policy meta tag`
 
-- [ ] フェーズ1のテスト実行
-  - [ ] `npx biome check src/` でエラーなし
-  - [ ] `npx tsc --noEmit` でエラーなし
-  - [ ] `npx vitest run` でサンプルテストが pass
-  - [ ] `npx playwright test` で smoke test が pass
-  - [ ] `npm run build` でビルド成功
+- [x] フェーズ1のテスト実行
+  - [x] `npx biome check src/` でエラーなし
+  - [x] `npx tsc --noEmit` でエラーなし
+  - [x] `npx vitest run` でサンプルテストが pass
+  - [x] `npx playwright test` で smoke test が pass
+  - [x] `npm run build` でビルド成功
 
 ## フェーズ2: 型定義とデータレイヤーの基盤
 
-- [ ] ディレクトリ構造の構築
-  - [ ] `src/components/` ディレクトリを作成
-  - [ ] `src/hooks/` ディレクトリを作成
-  - [ ] `src/lib/storage/` ディレクトリを作成
-  - [ ] `src/lib/validators/` ディレクトリを作成
-  - [ ] `src/types/` ディレクトリを作成
-  - [ ] 各コンポーネントディレクトリを作成: `src/components/error-fallback/`, `src/components/toast/`
-  - [ ] `docs/project-structure.md` のディレクトリ構成と一致していることを確認
-  - [ ] commit: `feat: create directory structure per project-structure.md`
+- [x] ディレクトリ構造の構築
+  - [x] `src/components/` ディレクトリを作成
+  - [x] `src/hooks/` ディレクトリを作成
+  - [x] `src/lib/storage/` ディレクトリを作成
+  - [x] `src/lib/validators/` ディレクトリを作成
+  - [x] `src/types/` ディレクトリを作成
+  - [x] 各コンポーネントディレクトリを作成: `src/components/error-fallback/`, `src/components/toast/`
+  - [x] `docs/project-structure.md` のディレクトリ構成と一致していることを確認
+  - [x] commit: `feat: create directory structure per project-structure.md`
 
 - [ ] 型定義ファイルの作成（`src/types/todo.ts`）
   - [ ] `Todo` 型を定義（id, title, completed, createdAt を全て readonly）
