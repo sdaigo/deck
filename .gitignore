@@ -9,6 +9,7 @@ node_modules/
 # Build output
 dist/
 
-# Playwright
+# Test
+coverage/
 playwright-report/
 test-results/
