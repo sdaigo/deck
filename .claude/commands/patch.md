@@ -21,7 +21,10 @@ description: 小規模なバグ修正・改善を軽量プロセスで実行す�
    - 日付: `[現在の日付をYYYYMMDD形式で取得]`
    - ステアリングディレクトリ: `.steering/[日付]-patch-[修正名]/`
 2. ステアリングディレクトリを作成する
-3. `fix/[修正名]` ブランチを作成する
+3. `develop` から `fix/[修正名]` ブランチを作成する
+   ```bash
+   git checkout develop && git pull && git checkout -b fix/[修正名]
+   ```
 
 ## ステップ2: changeset.md を作成
 
@@ -77,10 +80,15 @@ description: 小規模なバグ修正・改善を軽量プロセスで実行す�
 
 レビュー指摘・テスト失敗があれば修正し、再度レビュー・テストを実行する。
 
-## ステップ5: 完了
+## ステップ5: 完了と PR 作成
 
 1. changeset.md の完了チェックを更新する
 2. 変更ファイルと changeset.md をコミットする
    - バグ修正: `fix: [修正内容]`
    - リファクタ: `refactor: [修正内容]`
-3. ユーザーに完了を報告し、マージ方法を確認する
+3. リモートにプッシュし、develop への PR を作成する
+   ```bash
+   git push -u origin fix/[修正名]
+   gh pr create --base develop --title "fix: [修正内容]" --body "[changeset.md のサマリー]"
+   ```
+4. PR の URL をユーザーに報告する

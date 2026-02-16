@@ -5,10 +5,18 @@
 ## ブランチ戦略
 
 - `main` - 本番デプロイ可能
-- `develop` - 開発最新 → main
-- `feature/[機能名]` → develop
-- `fix/[修正内容]` → develop
-- `hotfix/[修正内容]` → main + develop
+- `develop` - 開発統合ブランチ。リリース準備が整ったら main にマージ
+- `feature/[機能名]` - develop から分岐 → develop にマージ
+- `fix/[修正内容]` - develop から分岐 → develop にマージ
+- `hotfix/[修正内容]` - main から分岐 → main にマージ後、develop にも反映
+
+### マージフロー
+
+```
+feature/xxx ──PR──→ develop ──リリース──→ main
+fix/xxx     ──PR──→ develop
+hotfix/xxx  ──PR──→ main（マージ後 develop にも反映）
+```
 
 ## コミットメッセージ
 
@@ -21,6 +29,8 @@ subject は命令形で簡潔に。句点なし。
 ## プルリクエスト
 
 作成前チェック: Lint + Format、型チェック、ユニットテスト
+
+PR 作成: `gh pr create` で作成。マージ先は上記マージフローに従う。
 
 レビュープロセス: セルフレビュー → CI → レビュアー → フィードバック対応 → Squash merge
 

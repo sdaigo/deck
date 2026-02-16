@@ -31,4 +31,6 @@
 - `.claude/skills/steering/templates/design.md` → `.steering/[日付]-[機能名]/design.md`
 - `.claude/skills/steering/templates/tasklist.md` → `.steering/[日付]-[機能名]/tasklist.md`
 
+**tasklist.md の責務分担**: plan.md はテンプレートの配置と基本構造（フェーズ見出し等）の作成のみ行う。具体的なタスク分解は `/feature-design` のステップ6で planner エージェント（opus）が実行する。plan.md でタスクの詳細を書き込まないこと。
+
 **重要**: ファイルを作成したらユーザーにレビューを依頼すること。ユーザーから明示的に承認がない限り次のステップには進まないこと。

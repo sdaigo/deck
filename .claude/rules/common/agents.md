@@ -7,10 +7,12 @@
 ユーザーの指示がなくても、以下の条件で自動的にエージェントを起動する:
 
 1. **design.md 作成直後** → `ux-reviewer` (sonnet) を起動
-2. **コード変更直後** → `code-reviewer` (sonnet) + `security-reviewer` (sonnet) を並行起動
-3. **UIコンポーネント実装直後** → `a11y-auditor` (sonnet) を起動
-4. **DBスキーマ変更直後** → `db-reviewer` (sonnet) を起動
+2. **フェーズ完了時** → `code-reviewer` (sonnet) + `security-reviewer` (sonnet) を並行起動（フェーズ内の全変更をバッチレビュー）
+3. **フェーズ完了時（UI変更を含む場合）** → 上記に加えて `a11y-auditor` (sonnet) も並行起動
+4. **フェーズ完了時（DBスキーマ変更を含む場合）** → 上記に加えて `db-reviewer` (sonnet) も並行起動
 5. **フェーズ完了時** → `test-runner` (haiku) を `--full` モードで起動
+
+**注意**: タスク単位ではなくフェーズ単位でレビューを実行する。個々のタスク完了時にはローカルテスト（型チェック・Lint・ユニットテスト）のみ実行し、エージェントレビューはフェーズ境界でバッチ実行する。
 
 `planner` (opus) は `/feature-design` 内部の tasklist.md 生成時にのみ使用。PROACTIVE ではない。
 

@@ -17,11 +17,18 @@ description: 承認済みの設計に基づき、tasklist.mdに従って実装�
   - `prototypes/` - ワイヤーフレームとユーザーフロー
   - `ui-design-brief.md` - デザイン参照方法が記載されている
 
-## ステップ1: 設計の読み込みとデザイン参照の確認
+## ステップ1: ブランチ作成
 
 1. 引数で指定されたステアリングディレクトリを特定する
    - パス指定なし → `.steering/` 内の最新ディレクトリを使用
-2. `requirements.md`, `design.md`, `tasklist.md` を読み込む
+2. ディレクトリ名から機能名を取得し、`feature/[機能名]` ブランチを `develop` から作成する
+   ```bash
+   git checkout develop && git pull && git checkout -b feature/[機能名]
+   ```
+
+## ステップ2: 設計の読み込みとデザイン参照の確認
+
+1. `requirements.md`, `design.md`, `tasklist.md` を読み込む
 3. `ui-design-brief.md` を読み込み、デザイン参照方法を判定する:
 
 ### デザイン参照方法の判定
@@ -46,7 +53,7 @@ description: 承認済みの設計に基づき、tasklist.mdに従って実装�
 
 4. タスクリストの全体像をユーザーに報告し、開始の確認を得る
 
-## ステップ2: 実装モードで開始
+## ステップ3: 実装モードで開始
 
 `Skill('steering', args: '実装')` を実行する。
 
@@ -56,16 +63,27 @@ steeringスキルの実装モードに従い:
 - 各タスクでPROACTIVEエージェントを自動起動
 - 5タスクごとにセルフチェック
 
-## ステップ3: フェーズ完了時
+## ステップ4: フェーズ完了時
 
 1. test-runner (haiku) を起動してフルテスト実行
-2. テスト失敗時はステップ2に戻り修正。全テスト通過するまで次に進まない
+2. テスト失敗時はステップ3に戻り修正。全テスト通過するまで次に進まない
 3. tasklist.md の進捗をユーザーに報告
 4. 次のフェーズへの承認を得る
 
-## ステップ4: 全タスク完了
+## ステップ5: 全タスク完了
 
 1. tasklist.md の全タスクが `[x]` であることを確認
 2. test-runner (haiku) で最終テスト
 3. `Skill('steering', args: '振り返り')` を実行し、振り返りを記録
-4. ユーザーに完了を報告
+
+## ステップ6: PR 作成
+
+1. リモートにプッシュする
+   ```bash
+   git push -u origin feature/[機能名]
+   ```
+2. `gh pr create` で develop へのプルリクエストを作成する
+   - タイトル: `feat: [機能名の概要]`
+   - 本文: requirements.md のサマリー + tasklist.md の完了状況
+   - ベースブランチ: `develop`
+3. PR の URL をユーザーに報告し、完了を伝える

@@ -41,6 +41,8 @@ tasklist.mdに記載された全タスクが`[x]`になるまで作業を継続�
 
 ### ステップ1: ドキュメント読み込み
 
+**注意**: `/feature-implement` コマンド経由で呼ばれた場合、ステップ2で既に読み込み済みのドキュメントはスキップする。
+
 ```text
 Read('.steering/[日付]-[機能名]/tasklist.md')
 Read('.steering/[日付]-[機能名]/design.md')
@@ -89,21 +91,13 @@ TaskUpdate({ taskId: "対象ID", status: "in_progress" })
 `docs/development-guidelines.md` のコーディング規約に従って実装する。
 `docs/project-structure.md` のファイル配置ルールに従ってファイルを作成する。
 
-**3-4. テストを実行**
+**3-4. ローカル検証**
 
-実装完了後、`docs/development-guidelines.md` に定義されたテスト・型チェック・Lint コマンドを実行する。テストが失敗した場合は修正してから次に進む。
+実装完了後、`docs/development-guidelines.md` に定義されたテスト・型チェック・Lint コマンドを実行する。失敗した場合は修正してからタスク完了に進む。
 
-**3-5. PROACTIVE エージェント起動**
+**注意**: エージェントレビュー（code-reviewer, security-reviewer 等）はタスク単位では実行しない。フェーズ完了時にバッチ実行する（ステップ4参照）。
 
-`.claude/rules/common/agents.md` の PROACTIVE 条件に従い、変更内容に応じてエージェントを自動起動する:
-
-- コード変更後 → `code-reviewer` + `security-reviewer`（並行）
-- UIコンポーネント実装後 → `a11y-auditor`
-- DBスキーマ変更後 → `db-reviewer`
-
-エージェントからの指摘があれば修正してからタスク完了に進む。
-
-**3-6. タスク完了をtasklist.mdに記録（必須）**
+**3-5. タスク完了をtasklist.mdに記録（必須）**
 
 実装・テスト完了後、Editツールでtasklist.mdを更新して完了を記録:
 
@@ -114,13 +108,13 @@ new_string: "- [x] StorageServiceを実装"
 
 サブタスクがある場合はサブタスクも個別に更新する。
 
-**3-7. TaskUpdateでもステータス更新**
+**3-6. TaskUpdateでもステータス更新**
 
 ```text
 TaskUpdate({ taskId: "対象ID", status: "completed" })
 ```
 
-**3-8. トップレベルタスク完了時にコミット**
+**3-7. トップレベルタスク完了時にコミット**
 
 トップレベルのタスク（サブタスクではない）が完了したら、その時点でコミットする:
 
@@ -137,7 +131,7 @@ git commit -m "feat(scope): タスクの内容を簡潔に"
 - サブタスクのみ完了した場合（親タスク完了時にまとめる）
 - テストやLintが失敗している場合（修正後にコミット）
 
-**3-9. 次のタスクへ**
+**3-8. 次のタスクへ**
 
 ステップ3-1に戻る。
 
@@ -147,7 +141,13 @@ git commit -m "feat(scope): タスクの内容を簡潔に"
 
 1. tasklist.mdを読み込んで進捗確認
 2. 全てのタスクが`[x]`になっているか確認
-3. ユーザーに報告: 「フェーズNが完了しました。tasklist.mdの進捗を確認してください。」
+3. `.claude/rules/common/agents.md` の PROACTIVE 条件に従い、フェーズ内の全変更に対してエージェントをバッチ起動する:
+   - `code-reviewer` + `security-reviewer`（並行）
+   - UI変更を含む場合: `a11y-auditor` も追加で並行起動
+   - DBスキーマ変更を含む場合: `db-reviewer` も追加で並行起動
+   - `test-runner` (haiku) を `--full` モードで起動
+4. エージェントからの指摘があれば修正し、再レビューする
+5. ユーザーに報告: 「フェーズNが完了しました。tasklist.mdの進捗を確認してください。」
 
 ### ステップ5: 全タスク完了チェック（必須）
 
