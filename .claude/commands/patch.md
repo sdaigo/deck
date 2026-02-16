@@ -92,3 +92,4 @@ description: 小規模なバグ修正・改善を軽量プロセスで実行す�
    gh pr create --base develop --title "fix: [修正内容]" --body "[changeset.md のサマリー]"
    ```
 4. PR の URL をユーザーに報告する
+5. ステアリングディレクトリ（`.steering/[日付]-patch-[修正名]/`）は役割を終えたため、不要であれば削除可能な旨を案内する
