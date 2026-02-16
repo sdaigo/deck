@@ -139,30 +139,30 @@
   - [x] barrel file（`src/lib/validators/index.ts`）を作成
   - [x] commit: `feat(validators): add todoValidator interface with stub implementation`
 
-- [ ] フェーズ2のテスト実行
-  - [ ] `npx biome check src/` でエラーなし
-  - [ ] `npx tsc --noEmit` でエラーなし
-  - [ ] `npm run build` でビルド成功
+- [x] フェーズ2のテスト実行
+  - [x] `npx biome check src/` でエラーなし
+  - [x] `npx tsc --noEmit` でエラーなし
+  - [x] `npm run build` でビルド成功
 
 ## フェーズ3: 基盤コンポーネントの実装
 
-- [ ] useToast フックの実装とテスト
-  - [ ] `src/hooks/use-toast.ts` を作成
-  - [ ] `showToast(type, message)` でメッセージを追加する機能を実装
-  - [ ] `dismissToast(id)` で手動消去する機能を実装
-  - [ ] メッセージ ID は `crypto.randomUUID()` で生成
-  - [ ] 自動消去: error は自動消去しない、warning は 10 秒、info は 5 秒
-  - [ ] 最大表示数 5 件の制御（error はカウント対象外、超過分は古いものから消去）
-  - [ ] コンポーネントのアンマウント時にタイマーをクリア
-  - [ ] `src/hooks/use-toast.test.ts` を作成
-  - [ ] テスト: showToast でメッセージが追加される
-  - [ ] テスト: dismissToast でメッセージが消去される
-  - [ ] テスト: info は 5 秒後に自動消去される（`vi.useFakeTimers` 使用）
-  - [ ] テスト: warning は 10 秒後に自動消去される
-  - [ ] テスト: error は自動消去されない
-  - [ ] テスト: 最大 5 件を超えた場合、古い非 error メッセージが消去される
-  - [ ] `npx vitest run src/hooks/use-toast.test.ts` で全テスト pass
-  - [ ] commit: `feat(hooks): implement useToast hook with auto-dismiss`
+- [x] useToast フックの実装とテスト
+  - [x] `src/hooks/use-toast.ts` を作成
+  - [x] `showToast(type, message)` でメッセージを追加する機能を実装
+  - [x] `dismissToast(id)` で手動消去する機能を実装
+  - [x] メッセージ ID は `crypto.randomUUID()` で生成
+  - [x] 自動消去: error は自動消去しない、warning は 10 秒、info は 5 秒
+  - [x] 最大表示数 5 件の制御（error はカウント対象外、超過分は古いものから消去）
+  - [x] コンポーネントのアンマウント時にタイマーをクリア
+  - [x] `src/hooks/use-toast.test.ts` を作成
+  - [x] テスト: showToast でメッセージが追加される
+  - [x] テスト: dismissToast でメッセージが消去される
+  - [x] テスト: info は 5 秒後に自動消去される（`vi.useFakeTimers` 使用）
+  - [x] テスト: warning は 10 秒後に自動消去される
+  - [x] テスト: error は自動消去されない
+  - [x] テスト: 最大 5 件を超えた場合、古い非 error メッセージが消去される
+  - [x] `npx vitest run src/hooks/use-toast.test.ts` で全テスト pass
+  - [x] commit: `feat(hooks): implement useToast hook with auto-dismiss`
 
 - [ ] Toast コンポーネントの実装とテスト
   - [ ] `src/components/toast/toast.tsx` を作成
