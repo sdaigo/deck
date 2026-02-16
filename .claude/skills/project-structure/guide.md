@@ -262,6 +262,27 @@ app/extraction/actions.ts (Server Actions)
 5. テストファイルの配置が明確か
 6. 新規メンバーが迷わずファイルを配置できるか
 
+## プロジェクト固有の規約: React + Vite SPA
+
+### Vite プロジェクトの構成規約
+
+- `public/` に静的アセット（favicon 等）を配置。Vite がそのままコピーする
+- `src/` 配下にアプリケーションコードを配置
+- エントリポイント: `src/main.tsx`（Vite の規約）
+- `index.html` はプロジェクトルートに配置（Vite の規約）
+
+### React コンポーネントの配置規約
+
+- コンポーネントは `src/components/` に kebab-case のディレクトリで配置
+- 小規模プロジェクトでは `features/` を使わず、フラットな `components/` で十分
+- カスタムフックは `src/hooks/` に配置
+- ストレージやユーティリティは `src/lib/` に配置
+
+### テストの配置
+
+- ユニットテスト: ソースファイルと同階層にコロケーション（`*.test.ts(x)`）
+- E2E テスト: `e2e/` ディレクトリに配置（Playwright の規約）
+
 ## チェックリスト
 
 - [ ] ルートディレクトリ構成が定義されている
