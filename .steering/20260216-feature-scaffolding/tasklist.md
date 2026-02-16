@@ -184,27 +184,27 @@
   - [x] `npx vitest run src/components/toast/toast.test.tsx` で全テスト pass
   - [x] commit: `feat(ui): implement Toast component with accessibility`
 
-- [ ] ErrorFallback コンポーネントの実装とテスト
-  - [ ] `src/components/error-fallback/error-fallback.tsx` を作成
-  - [ ] エラーメッセージを日本語で表示:「問題が発生しました」「予期しないエラーが発生しました。ページを再読み込みしてください。」
-  - [ ] 「再読み込み」ボタン（プライマリ、塗りつぶし青）を実装
-  - [ ] 「データをリセット」ボタン（セカンダリ、赤アウトライン）を実装
-  - [ ] 「データをリセット」クリック時に `window.confirm()` で確認ダイアログを表示
-  - [ ] 確認ダイアログでキャンセル時は操作を中止
-  - [ ] 確認後に localStorage クリア + `onReset` 呼び出し
-  - [ ] セマンティック HTML（`<main>`, `<h1>`, `<p>`, `<button>`）を使用
-  - [ ] ボタンに `focus-visible` リングを設定
-  - [ ] 開発環境でのみ `error.message` をコンソールに出力
-  - [ ] barrel file（`src/components/error-fallback/index.ts`）を作成
-  - [ ] `src/components/error-fallback/error-fallback.test.tsx` を作成
-  - [ ] テスト: エラーメッセージが日本語で表示される
-  - [ ] テスト:「再読み込み」ボタンが存在する
-  - [ ] テスト:「データをリセット」ボタンが存在する
-  - [ ] テスト:「データをリセット」で confirm が呼ばれる
-  - [ ] テスト: confirm で OK 時に localStorage がクリアされ onReset が呼ばれる
-  - [ ] テスト: confirm でキャンセル時に localStorage がクリアされない
-  - [ ] `npx vitest run src/components/error-fallback/error-fallback.test.tsx` で全テスト pass
-  - [ ] commit: `feat(ui): implement ErrorFallback component`
+- [x] ErrorFallback コンポーネントの実装とテスト
+  - [x] `src/components/error-fallback/error-fallback.tsx` を作成
+  - [x] エラーメッセージを日本語で表示:「問題が発生しました」「予期しないエラーが発生しました。ページを再読み込みしてください。」
+  - [x] 「再読み込み」ボタン（プライマリ、塗りつぶし青）を実装
+  - [x] 「データをリセット」ボタン（セカンダリ、赤アウトライン）を実装
+  - [x] 「データをリセット」クリック時に `window.confirm()` で確認ダイアログを表示
+  - [x] 確認ダイアログでキャンセル時は操作を中止
+  - [x] 確認後に localStorage クリア + `onReset` 呼び出し
+  - [x] セマンティック HTML（`<main>`, `<h1>`, `<p>`, `<button>`）を使用
+  - [x] ボタンに `focus-visible` リングを設定
+  - [x] 開発環境でのみ `error.message` をコンソールに出力
+  - [x] barrel file（`src/components/error-fallback/index.ts`）を作成
+  - [x] `src/components/error-fallback/error-fallback.test.tsx` を作成
+  - [x] テスト: エラーメッセージが日本語で表示される
+  - [x] テスト:「再読み込み」ボタンが存在する
+  - [x] テスト:「データをリセット」ボタンが存在する
+  - [x] テスト:「データをリセット」で confirm が呼ばれる
+  - [x] テスト: confirm で OK 時に localStorage がクリアされ onReset が呼ばれる
+  - [x] テスト: confirm でキャンセル時に localStorage がクリアされない
+  - [x] `npx vitest run src/components/error-fallback/error-fallback.test.tsx` で全テスト pass
+  - [x] commit: `feat(ui): implement ErrorFallback component`
 
 - [ ] App コンポーネントと Error Boundary の実装
   - [ ] `src/app.tsx` に Error Boundary をクラスコンポーネントとして実装（プライベート、ファイル内のみ）
