@@ -164,25 +164,25 @@
   - [x] `npx vitest run src/hooks/use-toast.test.ts` で全テスト pass
   - [x] commit: `feat(hooks): implement useToast hook with auto-dismiss`
 
-- [ ] Toast コンポーネントの実装とテスト
-  - [ ] `src/components/toast/toast.tsx` を作成
-  - [ ] error（赤）/ warning（黄）/ info（青）の視覚的区別を Tailwind CSS で実装
-  - [ ] 手動消去ボタン（x ボタン）を実装
-  - [ ] `aria-live` を種別で動的に切り替え: error は `"assertive"`, warning/info は `"polite"`
-  - [ ] `role="alert"` を設定
-  - [ ] 位置を画面右上に固定（`fixed top-4 right-4`）
-  - [ ] warning/info にプログレスバーを表示（CSS transition で幅 100% から 0% にアニメーション）
-  - [ ] error にはプログレスバーを表示しない
-  - [ ] barrel file（`src/components/toast/index.ts`）を作成
-  - [ ] `src/components/toast/toast.test.tsx` を作成
-  - [ ] テスト: error/warning/info の各種別が正しく表示される
-  - [ ] テスト: error の aria-live が `"assertive"` である
-  - [ ] テスト: warning/info の aria-live が `"polite"` である
-  - [ ] テスト: 消去ボタンクリックで onDismiss が呼ばれる
-  - [ ] テスト: warning/info にプログレスバーが表示される
-  - [ ] テスト: error にプログレスバーが表示されない
-  - [ ] `npx vitest run src/components/toast/toast.test.tsx` で全テスト pass
-  - [ ] commit: `feat(ui): implement Toast component with accessibility`
+- [x] Toast コンポーネントの実装とテスト
+  - [x] `src/components/toast/toast.tsx` を作成
+  - [x] error（赤）/ warning（黄）/ info（青）の視覚的区別を Tailwind CSS で実装
+  - [x] 手動消去ボタン（x ボタン）を実装
+  - [x] `aria-live` を種別で動的に切り替え: error は `"assertive"`, warning/info は `"polite"`
+  - [x] `role="alert"` を設定
+  - [x] 位置を画面右上に固定（`fixed top-4 right-4`）
+  - [x] warning/info にプログレスバーを表示（CSS transition で幅 100% から 0% にアニメーション）
+  - [x] error にはプログレスバーを表示しない
+  - [x] barrel file（`src/components/toast/index.ts`）を作成
+  - [x] `src/components/toast/toast.test.tsx` を作成
+  - [x] テスト: error/warning/info の各種別が正しく表示される
+  - [x] テスト: error の aria-live が `"assertive"` である
+  - [x] テスト: warning/info の aria-live が `"polite"` である
+  - [x] テスト: 消去ボタンクリックで onDismiss が呼ばれる
+  - [x] テスト: warning/info にプログレスバーが表示される
+  - [x] テスト: error にプログレスバーが表示されない
+  - [x] `npx vitest run src/components/toast/toast.test.tsx` で全テスト pass
+  - [x] commit: `feat(ui): implement Toast component with accessibility`
 
 - [ ] ErrorFallback コンポーネントの実装とテスト
   - [ ] `src/components/error-fallback/error-fallback.tsx` を作成
