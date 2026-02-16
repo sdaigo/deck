@@ -124,14 +124,14 @@
   - [x] `docs/functional-design.md` のデータモデルと一致していることを確認
   - [x] commit: `feat(types): add Todo, FilterType, ToastMessage, StorageSchema types`
 
-- [ ] todoStorage の interface 実装（`src/lib/storage/todo-storage.ts`）
-  - [ ] `STORAGE_KEY` 定数を定義（`"simpletodo:data"`）
-  - [ ] `SCHEMA_VERSION` 定数を定義（`1`）
-  - [ ] `load` 関数のスタブ実装（空配列を返す）
-  - [ ] `save` 関数のスタブ実装（何もしない）
-  - [ ] `TodoStorage` 型に準拠していることを確認
-  - [ ] barrel file（`src/lib/storage/index.ts`）を作成
-  - [ ] commit: `feat(storage): add todoStorage interface with stub implementation`
+- [x] todoStorage の interface 実装（`src/lib/storage/todo-storage.ts`）
+  - [x] `STORAGE_KEY` 定数を定義（`"simpletodo:data"`）
+  - [x] `SCHEMA_VERSION` 定数を定義（`1`）
+  - [x] `load` 関数のスタブ実装（空配列を返す）
+  - [x] `save` 関数のスタブ実装（何もしない）
+  - [x] `TodoStorage` 型に準拠していることを確認
+  - [x] barrel file（`src/lib/storage/index.ts`）を作成
+  - [x] commit: `feat(storage): add todoStorage interface with stub implementation`
 
 - [ ] todoValidator の interface 実装（`src/lib/validators/todo-validator.ts`）
   - [ ] `validateTitle` 関数の型定義とスタブ実装（常に true を返す）
