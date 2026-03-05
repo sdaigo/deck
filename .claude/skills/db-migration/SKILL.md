@@ -1,25 +1,15 @@
 ---
 name: db-migration
-description: Drizzle ORMスキーマ変更・マイグレーション管理を行う。DBスキーマ作成・変更時に使用する。
+description: Drizzle ORMスキーマの定義、マイグレーション生成、RLSポリシー設定を管理する。DBテーブルの新規作成・変更時に使用する。
 user-invocable: false
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 
 # DB Migration スキル
 
-Drizzle ORMを使用したデータベーススキーマの定義、マイグレーション生成、適用を管理するスキルです。
-
-## 使用タイミング
-
-- 新しいテーブルの作成
-- 既存テーブルへのカラム追加・変更
-- インデックスの追加
-- RLSポリシーの設定
-- マイグレーションの生成と適用
-
 ## 前提条件
 
-以下のドキュメントを読み込んでからスキーマ定義を行う:
+以下のドキュメントを読み込む:
 
 - `docs/functional-design.md` - データモデル定義（エンティティ、フィールド、制約）
 - `docs/architecture.md` - データ永続化戦略、セキュリティ（RLS）

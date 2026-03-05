@@ -1,19 +1,11 @@
 ---
 name: ci-cd
-description: GitHub Actions CI/CDワークフローの生成・管理。PR検証パイプライン、デプロイパイプラインの構築時に使用する。
+description: GitHub ActionsのPR検証・ステージング・本番デプロイワークフローを生成する。/setup-infra のCI/CDステップで呼び出される。
 user-invocable: false
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 
 # CI/CD Pipeline スキル
-
-GitHub Actions を使用した CI/CD パイプラインの設計・生成を支援するスキルです。
-
-## 使用タイミング
-
-- CI/CD パイプラインの新規構築
-- 既存ワークフローの修正・拡張
-- デプロイ自動化の設定
 
 ## 前提条件
 

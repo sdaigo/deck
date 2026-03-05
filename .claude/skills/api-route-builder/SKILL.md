@@ -1,19 +1,11 @@
 ---
 name: api-route-builder
-description: Next.js Route Handler + zodバリデーション + 認証ミドルウェアのAPIルート生成。API作成時に使用する。
+description: Next.js Route Handler + zodバリデーション + 認証のAPIルートを生成する。新規APIエンドポイント作成時に使用する。
 user-invocable: false
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 
 # API Route Builder スキル
-
-プロジェクトのレイヤードアーキテクチャに準拠したNext.js API Route Handlerを生成するスキルです。
-
-## 使用タイミング
-
-- 新しいAPIエンドポイントの作成
-- 既存APIの修正・拡張
-- zodバリデーションスキーマの作成
 
 ## 前提条件
 

@@ -1,6 +1,6 @@
 ---
 name: project-structure
-description: プロジェクトのファイル構造を定義するためのスキル。プロジェクト構造定義時にのみ使用。
+description: 技術スタックに基づくディレクトリ構造と命名規則を定義する。/setup のプロジェクト構造定義ステップで呼び出される。
 user-invocable: false
 allowed-tools: Read, Write
 ---

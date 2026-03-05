@@ -1,6 +1,6 @@
 ---
 name: steering
-description: 作業指示毎の作業計画、タスクリストをドキュメントに記録するためのスキル。ユーザーからの指示をトリガーとした作業計画時、検証時に読み込む。
+description: 作業計画（requirements.md、design.md）と tasklist.md の作成・実装管理を行う。/feature-design や /feature-implement から内部的に呼び出される。
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep, Task
 ---
 

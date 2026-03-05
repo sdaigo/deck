@@ -1,19 +1,11 @@
 ---
 name: infra-guide
-description: デプロイ先の選定・インフラ構成の設計ガイド。プロジェクト初期のインフラ設計や、デプロイ先の変更時に使用する。
+description: プラットフォーム比較、構成パターン提案、環境設計、監視設計を行う。/setup-infra のインフラ設計ステップで呼び出される。
 user-invocable: false
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep, WebSearch
 ---
 
 # Infrastructure Guide スキル
-
-プロジェクトのデプロイ先選定とインフラ構成の設計を支援するスキルです。
-
-## 使用タイミング
-
-- プロジェクト初期のインフラ設計
-- デプロイ先プラットフォームの選定・変更
-- 本番環境のアーキテクチャ設計
 
 ## 前提条件
 

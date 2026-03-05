@@ -22,9 +22,8 @@
 .claude/
   agents/          専門家エージェント（Task ツールで起動）
   rules/common/    汎用ルール（自動読み込み）
-  commands/        スラッシュコマンド
   hooks/           ツール実行後の自動処理
-  skills/          対話的ガイド（メインコンテキストに読み込み）
+  skills/          スキル（スラッシュコマンド + テンプレート + ガイド）
   settings.json    権限・フック設定
 ```
 
@@ -57,16 +56,20 @@
 | `security.md` | OWASP Top 10、入力バリデーション |
 | `agents.md` | エージェント委譲、並行実行パターン |
 
-## コマンド
+## スキル
 
-`.claude/commands/` に定義。`/コマンド名` で実行する。
+`.claude/skills/` に定義。`/スキル名` で実行するワークフロースキルと、他のスキルから呼び出されるサブスキルがある。
 
-| コマンド | 用途 |
+### ワークフロースキル（`/スキル名` で実行）
+
+| スキル | 用途 |
 |:---|:---|
 | `/setup` | 初回セットアップ（docs/ に 6 ファイル生成） |
 | `/setup-infra` | インフラ構成設計 + CI/CD パイプライン生成 |
 | `/feature-design` | 機能設計（.steering/ 生成 + UX レビュー） |
 | `/feature-implement` | 承認済み設計に基づく実装開始 |
+| `/patch` | 小規模なバグ修正・改善（軽量プロセス） |
+| `/hotfix` | 緊急の軽微な修正（最小プロセス） |
 | `/checkpoint` | 作業状態の記録 |
 | `/review-code` | code-reviewer + security-reviewer 並行実行 |
 | `/run-tests` | test-runner 起動 |
@@ -74,11 +77,7 @@
 | `/pre-deploy` | デプロイ前ゲートチェック |
 | `/review-docs` | ドキュメントレビュー |
 
-## スキル
-
-`.claude/skills/` に定義。テンプレート同梱とプロジェクト追加に分類される。
-
-### テンプレート同梱
+### サブスキル（テンプレート同梱）
 
 | スキル | 用途 |
 |:---|:---|
@@ -90,6 +89,8 @@
 | development-guidelines | 開発ガイドラインの作成 |
 | glossary-creation | 用語集の作成 |
 | lofi-wireframer | ワイヤーフレーム生成 |
+| infra-guide | インフラ構成設計ガイド |
+| ci-cd | CI/CD ワークフロー生成 |
 
 ### プロジェクト追加（例）
 
@@ -98,8 +99,6 @@
 | db-migration | Drizzle ORM / Supabase |
 | component-builder | shadcn/ui / React |
 | api-route-builder | Next.js Route Handler |
-| ci-cd | GitHub Actions CI/CD |
-| infra-guide | インフラ構成設計 |
 
 ## フック
 

@@ -1,6 +1,6 @@
 ---
 name: functional-design
-description: 機能設計書を作成するための詳細ガイドとテンプレート。機能設計書作成時にのみ使用。
+description: PRDの要件を画面設計、データモデル、API設計に詳細化する。/setup の機能設計ステップで呼び出される。
 user-invocable: false
 allowed-tools: Read, Write
 ---

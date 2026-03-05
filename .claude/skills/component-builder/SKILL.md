@@ -1,19 +1,11 @@
 ---
 name: component-builder
-description: shadcn/uiベースのReactコンポーネント生成。WCAG 2.1 AA準拠のアクセシブルなUIコンポーネントを作成する。
+description: shadcn/uiベースのWCAG 2.1 AA準拠Reactコンポーネントを生成する。新規UIコンポーネントの作成・修正時に使用する。
 user-invocable: false
 allowed-tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 
 # Component Builder スキル
-
-プロジェクトのデザインシステムとアクセシビリティ要件に準拠したReactコンポーネントを生成するスキルです。
-
-## 使用タイミング
-
-- 新しいUIコンポーネントの作成
-- 既存コンポーネントの修正・拡張
-- shadcn/uiコンポーネントの追加
 
 ## 前提条件
 

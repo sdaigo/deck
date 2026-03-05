@@ -1,13 +1,11 @@
 ---
 name: lofi-wireframer
-description: 要求仕様から低忠実度ワイヤーフレームと画面遷移図を生成する。
+description: 要求仕様からMermaidユーザーフローとExcalidrawワイヤーフレームを生成する。/feature-design のワイヤーフレーム作成ステップで呼び出される。
 user-invocable: false
 allowed-tools: Read, Write
 ---
 
 # Lo-Fi ワイヤーフレーマースキル
-
-要求仕様から低忠実度ワイヤーフレームと画面遷移図を生成する。
 
 ## 前提ドキュメント
 

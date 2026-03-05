@@ -1,6 +1,6 @@
 ---
 name: architecture-design
-description: アーキテクチャ設計書を作成するための詳細ガイドとテンプレート。アーキテクチャ設計時にのみ使用。
+description: 技術スタック、レイヤー構成、データ永続化戦略を設計する。/setup のアーキテクチャ設計ステップで呼び出される。
 user-invocable: false
 allowed-tools: Read, Write
 ---

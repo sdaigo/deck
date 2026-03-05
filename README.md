@@ -102,9 +102,8 @@ graph TB
 .claude/
   agents/          専門家エージェント定義（Task ツールで起動）
   rules/common/    汎用ルール（自動読み込み）
-  commands/        スラッシュコマンド
   hooks/           ツール実行後の自動処理
-  skills/          対話的ガイド（メインコンテキストに読み込み）
+  skills/          スキル（スラッシュコマンド + テンプレート + ガイド）
   settings.json    権限・フック設定
 docs/              永続ドキュメント（/setup で生成）
   designs/         デザインファイル（.pen 等、機能横断で共有）
@@ -123,7 +122,7 @@ graph LR
     end
 
     subgraph "テンプレート（共有）"
-        CL[".claude/<br/>agents / rules / commands<br/>skills / hooks"]
+        CL[".claude/<br/>agents / rules<br/>skills / hooks"]
     end
 
     CL -->|参照| DOCS
@@ -143,13 +142,16 @@ graph LR
 | `security.md` | OWASP Top 10、入力バリデーション |
 | `agents.md` | エージェント委譲、並行実行パターン |
 
-## コマンド
+## スキル
 
-`.claude/commands/` に定義。`/コマンド名` で実行する。
+`.claude/skills/` に定義。`/スキル名` で実行するワークフロースキルと、他のスキルから呼び出されるサブスキルがある。
 
-| コマンド | 用途 |
+### ワークフロースキル（`/スキル名` で実行）
+
+| スキル | 用途 |
 |:---|:---|
 | `/setup` | 初回セットアップ（docs/ に 6 ファイル生成） |
+| `/setup-infra` | インフラ構成・CI/CD パイプライン構築 |
 | `/feature-design` | 機能設計（.steering/ 生成 + UX レビュー） |
 | `/feature-implement` | 承認済み設計に基づく実装開始 |
 | `/patch` | 小規模なバグ修正・改善（軽量プロセス） |
@@ -159,14 +161,9 @@ graph LR
 | `/run-tests` | test-runner 起動 |
 | `/audit-a11y` | a11y-auditor 起動 |
 | `/review-docs` | ドキュメントレビュー |
-| `/setup-infra` | インフラ構成・CI/CD パイプライン構築 |
 | `/pre-deploy` | デプロイ前ゲートチェック |
 
-## スキル
-
-`.claude/skills/` に定義。テンプレート同梱とプロジェクト追加に分類される。
-
-### テンプレート同梱
+### サブスキル（テンプレート同梱）
 
 | スキル | 用途 |
 |:---|:---|

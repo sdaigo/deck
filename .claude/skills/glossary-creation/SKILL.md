@@ -1,6 +1,6 @@
 ---
 name: glossary-creation
-description: 用語集を作成するための詳細ガイドとテンプレート。用語集作成時にのみ使用。
+description: 全ドキュメントからプロジェクト固有の用語を抽出し体系化する。/setup の用語集作成ステップで呼び出される。
 user-invocable: false
 allowed-tools: Read, Write
 ---
