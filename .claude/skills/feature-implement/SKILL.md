@@ -42,12 +42,13 @@ allowed-tools: Read, Write, Edit, Bash, Glob, Grep, Skill, Task
 
 ## ステップ3: 実装モード
 
-`Skill('steering', args: '実装')` を実行する。
+`Skill('steering')` を実行する。
 
-implement.md に従い自動的に処理される:
+steering スキルのモード2（実装）に従い自動的に処理される:
 - tasklist.md の未完了タスクを順に実装
-- フェーズ完了時にエージェントをバッチ起動
-- 全タスク完了後に振り返りを記録
+- 新規コードタスクでは tdd-practitioner を起動
+- フェーズ完了時に test-runner でローカルチェック
+- 全タスク完了後にモード2.5（品質ゲート）-> モード3（振り返り）へ
 
 ## ステップ4: PR 作成
 

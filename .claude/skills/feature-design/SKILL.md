@@ -38,7 +38,7 @@ allowed-tools: Read, Write, Edit, Bash, Glob, Grep, Skill, Task
 
 ## ステップ3: 計画フェーズ
 
-1. `Skill('steering', args: '計画')` を実行
+1. `Skill('steering')` を実行（モード1: ステアリングファイル作成が自動選択される）
 2. ユーザーの承認を得る
 
 ## ステップ4: ワイヤーフレーム作成

@@ -15,7 +15,8 @@
       "Skill(component-builder)",
       "Skill(api-route-builder)",
       "Skill(ci-cd)",
-      "Skill(infra-guide)"
+      "Skill(infra-guide)",
+      "Skill(playbook *)"
     ],
     "deny": [],
     "ask": []
